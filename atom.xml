@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.luckyonecn.com/"/>
-  <updated>2016-10-03T17:10:29.190Z</updated>
+  <updated>2016-10-03T17:26:19.344Z</updated>
   <id>http://www.luckyonecn.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://www.luckyonecn.com/blog/update-hexo-to-3-2-2/"/>
     <id>http://www.luckyonecn.com/blog/update-hexo-to-3-2-2/</id>
     <published>2016-10-03T16:17:24.000Z</published>
-    <updated>2016-10-03T17:10:29.190Z</updated>
+    <updated>2016-10-03T17:26:19.344Z</updated>
     
     <content type="html"><![CDATA[<p>因为Win10的自动更新把系统彻底搞崩了，重装之后需要恢复hexo环境，正好借机将原来的2.X版本升级到最新版3.2.2，记录下过程以及中间遇到的问题：</p>
 <h2 id="nodejs-amp-amp-git"><a href="#nodejs-amp-amp-git" class="headerlink" title="nodejs&amp;&amp;git"></a>nodejs&amp;&amp;git</h2><p>没什么好说的从官网下载最新版安装即可</p>
@@ -78,7 +78,13 @@ Template render error: (unknown path) [Line 7, Column 23]
 <pre><code>Plugin Loading Mechanism
 In Hexo 3, only plugins listed in package.json will be loaded, and plugins/scripts will be executed in sandbox so hexo namespace will be no longer exposed to global.
 </code></pre><p>这样看来_config.yml中的plugins项就失去了意义直接删除之后就可以顺利运行，连上面注释掉的feed插件也正常了。比照了下网站上的内容，发现没什么问题，进入下一步部署相关内容。</p>
-<h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><p>先在Git Bash里生成ssh密钥<br><code>ssh-keygen -t rsa -b 4096 -C &quot;your_email@example.com&quot;</code><br>将公钥配置到Github和Coding.net中（我是同时部署到这两个网站，在dnspod里配置DNS信息，联通和电信访问Coding.net其他就访问Github）</p>
+<h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><p>先在Git Bash里生成ssh密钥<br><code>ssh-keygen -t rsa -b 4096 -C &quot;your_email@example.com&quot;</code><br>将公钥配置到Github和Coding.net中（我是同时部署到这两个网站，在dnspod里配置DNS信息，联通和电信访问Coding.net其他就访问Github）<br>再<br><code>ssh -T git@github.com</code><br><code>ssh -T git@git.coding.net</code><br>测试下连通性，第一次的话一般会提示:</p>
+<pre><code>The authenticity of host &apos;github.com (192.30.253.113)&apos; can&apos;t be established.
+RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added &apos;github.com,192.30.253.113&apos; (RSA) to the list of known hosts.
+Hi XXXXXXX! You&apos;ve successfully authenticated, but GitHub does not provide shell access.
+</code></pre><p>将网站的公钥加入到known_hosts中。</p>
 ]]></content>
     
     <summary type="html">

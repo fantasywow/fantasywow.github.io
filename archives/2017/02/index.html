@@ -5,15 +5,15 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Git自动转换换行符(autocrlf)带来的问题 | LucKy_one&#39;s blog</title>
+  <title>归档：2017/2 | LucKy_one&#39;s blog</title>
   <meta name="author" content="Liu Tianhe">
   
-  <meta name="description" content="最近在使用Github时遇到个问题。众所周知，在各操作系统下，文本文件所使用的换行符是不一样的。UNIX/Linux使用的是 0x0A（LF），早期的 Mac OS 使用的是0x0D（CR），后来的 OS X 在更换内核后与 UNIX 保持一致了。但 DOS/Windows 一直使用 0x0D0A（CRLF）作为换行符。">
+  <meta name="description" content="待完善～～">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="Git自动转换换行符(autocrlf)带来的问题"/>
+  
   <meta property="og:site_name" content="LucKy_one&#39;s blog"/>
 
   
@@ -103,128 +103,31 @@ body{ -webkit-animation: bugfix infinite 1s; }
   	<div class="inner">
       <div class="padding">
     		
-          <h1>Git自动转换换行符(autocrlf)带来的问题</h1>
-          <ul>
-            <li>
-              <span class="heading-span">Posted on: </span>
-              <time datetime="2014-05-16T09:37:32.000Z">2014-05-16</time>
-            </li>
-            
-              <li>
-                <span class="heading-span">By: </span>
-
-                
-                  <a href="/">Liu Tianhe</a>
-                
-
-              </li>
-            
-          </ul>
+          <h2>Always aiming higher</h2>
         
       </div>
   	</div>
   </div>
   <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper" class="padding"><article class="post">
-  
-  
-    <div class="post-content">
-  
-      
-      <div class="entry">
-        
-          <p>最近在使用Github时遇到个问题。<br>众所周知，在各操作系统下，文本文件所使用的换行符是不一样的。UNIX/Linux 使用的是 0x0A（LF），早期的 Mac OS 使用的是0x0D（CR），后来的 OS X 在更换内核后与 UNIX 保持一致了。但 DOS/Windows 一直使用 0x0D0A（CRLF）作为换行符。</p>
-<p>Git提供了一个换行符自动转换功能试图解决这个问题–autocrlf，他包含了三种状态,true,input,false，详细内容可以看下面。<strong>Windows平台上的默认设置是true</strong>,这样在你签出代码的时候他会自动转换成你操作系统所使用CRLF，然后在提交的时候又自动转换成LF。</p>
-<p>这个时候问题来了，<strong>autocrlf在Mac下默认设置成false</strong>,因为现在Mac也是用LF，按理说就没必要进行任何转换，但是如果你在windows操作系统上将版本库放在例如Dropbox这种云存储上，然后同步到Mac上，或者什么其他方式把windows文件引入到Mac下。那么在你提交的时候在Mac环境下不会自动将CRLF转换成LF，那么就会发现所有行都有改动。这个时候就需要设置成input。</p>
-<p><strong>Github上的建议配置，是在windows下将core.autocrlf设为true，在Mac和linux下设为input，这样就可以有效避免上述问题。</strong></p>
-<p>P.S.与换行符相关的命令</p>
-<pre><code>#AutoCRLF
-#提交时转换为LF，检出时转换为CRLF
-git config --global core.autocrlf true   
-#提交时转换为LF，检出时不转换
-git config --global core.autocrlf input   
-#提交检出均不转换
-git config --global core.autocrlf false
+    <div id="main-col" class="alignleft"><div id="wrapper" class="padding">
+<h2 class="archive-title">2017/2</h2>
 
-#SafeCRLF
-#拒绝提交包含混合换行符的文件
-git config --global core.safecrlf true   
-#允许提交包含混合换行符的文件
-git config --global core.safecrlf false   
-#提交包含混合换行符的文件时给出警告
-git config --global core.safecrlf warn
-</code></pre><p>P.S.S.  git config 有三个作用域system，globe，local。优先级是local&gt;globe&gt;system。剩下的以后在研究 </p>
-<hr>
-<p>参考文章：<br><a href="http://git-scm.com/book/zh/%E8%87%AA%E5%AE%9A%E4%B9%89-Git-%E9%85%8D%E7%BD%AE-Git" target="_blank" rel="external">7.1 自定义 Git - 配置 Git</a><br><a href="https://help.github.com/articles/dealing-with-line-endings" target="_blank" rel="external">Dealing with line endings</a></p>
 
-        
-      </div>
-      <footer>
-        
-          
-          
-  
-  <div class="tags">
-    <a href="/tags/Git/">Git</a>
+  <div class="archive">
+    
+      <article class="post">
+        <div class="post-content">
+          <header>
+            <div class="icon"></div>
+            <time datetime="2017-02-13T12:35:23.000Z"><a href="/blog/spring-h2/">2017-02-13</a></time>
+            
+              <h1 class="title"><a href="/blog/spring-h2/">Spring+Maven+H2(Jave配置,非Spring Boot)</a></h1>
+            
+          </header>
+        </div>
+      </article>
+    
   </div>
-
-          <div class="share">
-  
-</div>
-          
-<nav class="article-nav clearfix">
- 
- <div class="article-prev" >
- <a href="/blog/difference_between_dependencies_and_devdependencies_in_npm/" title="npm package.json中的dependencies和devDependencies的区别">
-  <i class="fa fa-long-arrow-left"></i>
-  <span>
-  npm package.json中的dependencies和devDependencies的区别</span>
-</a>
-</div>
-
-
-<div class="article-next">
-<a href="/blog/change-domain-name-and-name-server/"  title="绑定自己的域名以及将DNS更换为DNSPOD">
- <span>绑定自己的域名以及将DNS更换为DNSPOD
-</span>
-<i class="fa fa-long-arrow-right"></i>
-</a>
-</div>
-
-</nav>
-
-        
-        <div class="clearfix"></div>
-      </footer>
-    </div>
-</article>
-
-
-<section id="comment">
-  <h2 class="title">留言</h2>
-
-  
-
-     <!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="blog/git-auto-crlf-problem/" data-title="Git自动转换换行符(autocrlf)带来的问题" data-url="http://www.luckyonecn.comblog/git-auto-crlf-problem/"></div>
-<!-- 多说评论框 end -->
-<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"luckyonecn"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-<!-- 多说公共JS代码 end -->
-
-  
-</section>
-
 </div></div>
     <aside id="sidebar" class="alignright"><div class="padding">
 	

@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.luckyonecn.com/blog/spring-h2/</loc>
+    
+    <lastmod>2017-02-13T12:52:06.822Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.luckyonecn.com/blog/update-hexo-to-3-2-2/</loc>
     
     <lastmod>2016-10-03T17:26:19.344Z</lastmod>

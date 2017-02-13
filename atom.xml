@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.luckyonecn.com/"/>
-  <updated>2017-02-13T12:52:06.822Z</updated>
+  <updated>2017-02-13T12:58:18.630Z</updated>
   <id>http://www.luckyonecn.com/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Spring+Maven+H2(Jave配置,非Spring Boot)</title>
+    <title>Spring+Maven+H2（Jave配置,非Spring Boot）</title>
     <link href="http://www.luckyonecn.com/blog/spring-h2/"/>
     <id>http://www.luckyonecn.com/blog/spring-h2/</id>
     <published>2017-02-13T12:35:23.000Z</published>
-    <updated>2017-02-13T12:52:06.822Z</updated>
+    <updated>2017-02-13T12:58:18.630Z</updated>
     
     <content type="html"><![CDATA[<p>H2作为一款嵌入式数据库非常适合用来写一些Demo小程序之类的。</p>
 <p>首先配置pom.xml添加H2的依赖。</p>
@@ -32,7 +32,6 @@
 </code></pre><p>接下来在你的RootConfig里配置数据源</p>
 <pre><code>@Bean
 public DataSource dataSource() {
-
     EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
     EmbeddedDatabase db = builder
             .setType(EmbeddedDatabaseType.H2)
@@ -40,7 +39,6 @@ public DataSource dataSource() {
             .addScript(&quot;db/data-db.sql&quot;)
             .build();
     return db;
-
 }
 </code></pre><p>addScript的两个脚本是用来建表和添加测试数据的，期间发现org.h2.command.Parser解析create table语句必须写在一行里，不支持中间有换行符，按理说应该能如何配置下来支持。</p>
 <p>想要开启H2的console还需要添加：</p>
@@ -48,7 +46,7 @@ public DataSource dataSource() {
 public org.h2.tools.Server h2WebConsonleServer () throws SQLException {
     return org.h2.tools.Server.createWebServer(&quot;-web&quot;,&quot;-webAllowOthers&quot;,&quot;-webDaemon&quot;,&quot;-webPort&quot;, &quot;8888&quot;);
 }
-</code></pre><p>之后就可以通过<a href="http://localhost:8888/访问H2的控制台了" target="_blank" rel="external">http://localhost:8888/访问H2的控制台了</a></p>
+</code></pre><p>之后就可以通过localhost:8888访问H2的控制台了</p>
 <p>够简单。</p>
 ]]></content>
     
@@ -239,11 +237,11 @@ Hi XXXXXXX! You&apos;ve successfully authenticated, but GitHub does not provide 
     </summary>
     
     
-      <category term="JAVA" scheme="http://www.luckyonecn.com/tags/JAVA/"/>
-    
       <category term="Web Service" scheme="http://www.luckyonecn.com/tags/Web-Service/"/>
     
       <category term="CXF" scheme="http://www.luckyonecn.com/tags/CXF/"/>
+    
+      <category term="JAVA" scheme="http://www.luckyonecn.com/tags/JAVA/"/>
     
       <category term="SPI(Service Provider Interface)" scheme="http://www.luckyonecn.com/tags/SPI-Service-Provider-Interface/"/>
     

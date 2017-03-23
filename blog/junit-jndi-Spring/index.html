@@ -5,15 +5,15 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Spring+Maven+H2（Jave配置,非Spring Boot） | LucKy_one&#39;s blog</title>
+  <title>在Spring中使用Junit4测试时访问JNDI资源 | LucKy_one&#39;s blog</title>
   <meta name="author" content="Liu Tianhe">
   
-  <meta name="description" content="使用Java配置在Spring中使用H2数据库">
+  <meta name="description" content="在Spring中使用Junit4测试时JNDI资源的访问问题">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="Spring+Maven+H2（Jave配置,非Spring Boot）"/>
+  <meta property="og:title" content="在Spring中使用Junit4测试时访问JNDI资源"/>
   <meta property="og:site_name" content="LucKy_one&#39;s blog"/>
 
   
@@ -103,11 +103,11 @@ body{ -webkit-animation: bugfix infinite 1s; }
   	<div class="inner">
       <div class="padding">
     		
-          <h1>Spring+Maven+H2（Jave配置,非Spring Boot）</h1>
+          <h1>在Spring中使用Junit4测试时访问JNDI资源</h1>
           <ul>
             <li>
               <span class="heading-span">Posted on: </span>
-              <time datetime="2017-02-13T12:35:23.000Z">2017-02-13</time>
+              <time datetime="2017-03-23T10:41:16.000Z">2017-03-23</time>
             </li>
             
               <li>
@@ -133,17 +133,13 @@ body{ -webkit-animation: bugfix infinite 1s; }
       
       <div class="entry">
         
-          <p>H2作为一款嵌入式数据库非常适合用来写一些Demo小程序之类的。</p>
-<p>首先配置pom.xml添加H2的依赖。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.h2database<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>h2<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>1.4.193<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>接下来在你的RootConfig里配置数据源</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Bean</span></div><div class="line"><span class="function"><span class="keyword">public</span> DataSource <span class="title">dataSource</span><span class="params">()</span> </span>&#123;</div><div class="line">    EmbeddedDatabaseBuilder builder = <span class="keyword">new</span> EmbeddedDatabaseBuilder();</div><div class="line">    EmbeddedDatabase db = builder</div><div class="line">            .setType(EmbeddedDatabaseType.H2)</div><div class="line">            .addScript(<span class="string">"db/create-db.sql"</span>)</div><div class="line">            .addScript(<span class="string">"db/data-db.sql"</span>)</div><div class="line">            .build();</div><div class="line">    <span class="keyword">return</span> db;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>addScript的两个脚本是用来建表和添加测试数据的，期间发现org.h2.command.Parser解析create table语句必须写在一行里，不支持中间有换行符，按理说应该能如何配置下来支持。</p>
-<p>想要开启H2的console还需要添加：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Bean</span>(initMethod=<span class="string">"start"</span>,destroyMethod=<span class="string">"stop"</span>)</div><div class="line"><span class="keyword">public</span> org.h2.tools.<span class="function">Server <span class="title">h2WebConsonleServer</span> <span class="params">()</span> <span class="keyword">throws</span> SQLException </span>&#123;</div><div class="line">    <span class="keyword">return</span> org.h2.tools.Server.createWebServer(<span class="string">"-web"</span>,<span class="string">"-webAllowOthers"</span>,<span class="string">"-webDaemon"</span>,<span class="string">"-webPort"</span>, <span class="string">"8888"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>之后就可以通过localhost:8888访问H2的控制台了</p>
-<p>够简单。</p>
+          <p>系统使用JNDI来访问在容器上配置的资源信息（例如数据库信息）,如果用xml来配置的话一般这么写</p>
+ <jee:jndi-lookup id="dataSource" jndi-name="jdbc/database" expected-type="javax.sql.DataSource">
 
+<p>但是使用Junit来做测试的时候并不会访问容器，也就无法获取资源信息。这个时候你可以另外写一份applicationContextTest.xml来供测试用，或者可以在Junit里配置JNDI资源。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@RunWith</span>(SpringJUnit4ClassRunner.class)</div><div class="line"><span class="meta">@ContextConfiguration</span>(locations = <span class="string">"classpath:applicationContext.xml"</span>)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">XXXXXXTest</span> </span>&#123; </div><div class="line">    <span class="meta">@BeforeClass</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">setUpJndi</span><span class="params">()</span> <span class="keyword">throws</span> IllegalStateException, NamingException</span>&#123;</div><div class="line">        </div><div class="line">        <span class="comment">//配置DataSource</span></div><div class="line">        SybDataSource ds = <span class="keyword">new</span> SybDataSource();</div><div class="line">        ds.setServerName(<span class="string">"127.0.0.1"</span>);</div><div class="line">        ds.setPortNumber(<span class="number">5000</span>);</div><div class="line">        ds.setDatabaseName(<span class="string">"databaseName"</span>);</div><div class="line">        ds.setNetworkProtocol(<span class="string">"Tds"</span>);</div><div class="line">        ds.setUser(<span class="string">"user"</span>);</div><div class="line">        ds.setPassword(<span class="string">"password"</span>);</div><div class="line">        ds.setCHARSET(<span class="string">"cp936"</span>);</div><div class="line">        </div><div class="line">        <span class="comment">//配置ActiveMQ</span></div><div class="line">        ActiveMQTopic topic = <span class="keyword">new</span> ActiveMQTopic(<span class="string">"testTopic"</span>);</div><div class="line">        ActiveMQConnectionFactory connectionFactory = <span class="keyword">new</span> ActiveMQConnectionFactory(<span class="string">"tcp://localhost:61616"</span>);</div><div class="line">        </div><div class="line">        <span class="comment">//org.springframework.mock.jndi.SimpleNamingContextBuilder </span></div><div class="line">        SimpleNamingContextBuilder builder = <span class="keyword">new</span> SimpleNamingContextBuilder();</div><div class="line">        builder.bind(<span class="string">"jdbc/database"</span>, ds);</div><div class="line">        builder.bind(<span class="string">"jms/topic"</span>, topic);</div><div class="line">        builder.bind(<span class="string">"jms/topicConnFactory"</span>, connectionFactory);</div><div class="line">        builder.activate();</div><div class="line">    &#125;     </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>实际使用的时候，直接使用生产的applicationContext很容易因为过于庞大而初始化过程缓慢，如果项目非常大还是应该单独写几个测试的applicationContext分模块来测试。</p>
+</jee:jndi-lookup>
         
       </div>
       <footer>
@@ -152,7 +148,7 @@ body{ -webkit-animation: bugfix infinite 1s; }
           
   
   <div class="tags">
-    <a href="/tags/Spring/">Spring</a>, <a href="/tags/H2/">H2</a>
+    <a href="/tags/Spring/">Spring</a>, <a href="/tags/Junit4/">Junit4</a>, <a href="/tags/JNDI/">JNDI</a>
   </div>
 
           <div class="share">
@@ -161,18 +157,10 @@ body{ -webkit-animation: bugfix infinite 1s; }
           
 <nav class="article-nav clearfix">
  
- <div class="article-prev" >
- <a href="/blog/junit-jndi-Spring/" title="在Spring中使用Junit4测试时访问JNDI资源">
-  <i class="fa fa-long-arrow-left"></i>
-  <span>
-  在Spring中使用Junit4测试时访问JNDI资源</span>
-</a>
-</div>
-
 
 <div class="article-next">
-<a href="/blog/update-hexo-to-3-2-2/"  title="升级hexo至3.2.2">
- <span>升级hexo至3.2.2
+<a href="/blog/spring-h2/"  title="Spring+Maven+H2（Jave配置,非Spring Boot）">
+ <span>Spring+Maven+H2（Jave配置,非Spring Boot）
 </span>
 <i class="fa fa-long-arrow-right"></i>
 </a>

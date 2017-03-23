@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.luckyonecn.com/blog/junit-jndi-Spring/</loc>
+    
+    <lastmod>2017-03-23T13:13:37.500Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.luckyonecn.com/blog/spring-h2/</loc>
     
-    <lastmod>2017-02-13T12:58:18.630Z</lastmod>
+    <lastmod>2017-03-23T12:05:08.760Z</lastmod>
     
   </url>
   

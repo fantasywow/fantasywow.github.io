@@ -145,7 +145,7 @@ body{ -webkit-animation: bugfix infinite 1s; }
 <li>对于长度小于17的数组使用插入排序(常见优化步骤，传统快排也有应用)。</li>
 <li>选择两个枢纽元p1,p2，一般选择起始元素a[left]和末尾元素a[right]（有其他选取方式）。</li>
 <li>假设p1&lt;p2，如果不是就交换。</li>
-<li>基于这p1,p2将整个数组分成三部分，<p1的,p1<&<p2的,>p2的。</p1的,p1<&<p2的,></li>
+<li>基于这p1,p2将整个数组分成三部分，&lt;p1的,p1&lt;&amp;&lt;p2的,&gt;p2的。</li>
 <li>递归排序这三个部分。</li>
 </ol>
 <p>其中4这个步骤是采用单向扫描，leetcode上的Sort Colors这题一般就是采用同样的方法分成三部分。<br><a href="https://oj.leetcode.com/problems/sort-colors/" target="_blank" rel="external">https://oj.leetcode.com/problems/sort-colors/</a></p>

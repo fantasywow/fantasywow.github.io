@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.luckyonecn.com/blog/Dual-Pivot_Quicksort/</loc>
+    
+    <lastmod>2017-04-04T15:57:58.120Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.luckyonecn.com/blog/junit-jndi-Spring/</loc>
     
     <lastmod>2017-03-23T13:13:37.500Z</lastmod>
@@ -61,13 +68,6 @@
     <loc>http://www.luckyonecn.com/blog/finance-fund/</loc>
     
     <lastmod>2015-05-30T11:05:47.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.luckyonecn.com/blog/Dual-Pivot_Quicksort/</loc>
-    
-    <lastmod>2014-08-31T09:38:40.000Z</lastmod>
     
   </url>
   

@@ -134,6 +134,7 @@ body{ -webkit-animation: bugfix infinite 1s; }
       <div class="entry">
         
           <p>课本上常见的快速排序都是选择一个枢纽元（Pivot），基于这个枢纽元从前后双向扫描分成大于枢纽元和小于枢纽元的。而从JDK 7开始，java.util.Arrays.sort()使用双基准快速排序（Dual-Pivot Quicksort）作为实现。</p>
+<p>—update JDK7使用双基准快速排序来排序基本元素，针对对象用TimSort</p>
 <p>###传统快速排序：</p>
 <ol>
 <li>选择枢纽元pivot,有很多种选法，但都只有一个。</li>

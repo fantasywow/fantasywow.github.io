@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.luckyonecn.com/"/>
-  <updated>2017-03-23T13:13:37.500Z</updated>
+  <updated>2017-04-23T08:53:12.702Z</updated>
   <id>http://www.luckyonecn.com/</id>
   
   <author>
@@ -14,6 +14,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JDK8中的effectively final</title>
+    <link href="http://www.luckyonecn.com/blog/effectively-final-JDK-8/"/>
+    <id>http://www.luckyonecn.com/blog/effectively-final-JDK-8/</id>
+    <published>2017-04-23T08:27:44.000Z</published>
+    <updated>2017-04-23T08:53:12.702Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>However, starting in Java SE 8, a local class can access local variables and parameters of the enclosing block that are final or effectively final. A variable or parameter whose value is never changed after it is initialized is effectively final.<br><a href="https://docs.oracle.com/javase/tutorial/java/javaOO/localclasses.html" target="_blank" rel="external">https://docs.oracle.com/javase/tutorial/java/javaOO/localclasses.html</a></p>
+</blockquote>
+<p>简单来说，如果只读一个变量，不再需要指定成final了。<br>而在之前，常见的匿名内部类访问外部局部变量必须指定成final。</p>
+<p>下面这段代码1.8就可以执行，1.7就会编译报错。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> aa = <span class="number">10</span>;</div><div class="line">    <span class="keyword">final</span> <span class="keyword">int</span> bb = <span class="number">20</span>;</div><div class="line">    Thread t1 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">            System.out.println(aa+bb);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<pre><code>1.7报错内容：Error:(22, 36) java: 从内部类中访问本地变量aa; 需要被声明为最终类型
+</code></pre><p>当你要修改的外部变量时，在1.8下也会直接报错：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> aa = <span class="number">10</span>;</div><div class="line">    <span class="keyword">final</span> <span class="keyword">int</span> bb = <span class="number">20</span>;</div><div class="line">    Thread t1 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">            System.out.println(aa+bb);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">    Thread t2 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">            aa = <span class="number">20</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<pre><code>1.8报错内容Error:(34, 17) java: 从内部类引用的本地变量必须是最终变量或实际上的最终变量
+(needs to be final or effectively final)
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      根据JDK8中的effectively final,闭包中访问外部变量不再必须指定为final
+    
+    </summary>
+    
+    
+      <category term="java" scheme="http://www.luckyonecn.com/tags/java/"/>
+    
+  </entry>
   
   <entry>
     <title>在Spring中使用Junit4测试时访问JNDI资源</title>
@@ -251,11 +282,11 @@ Hi XXXXXXX! You&apos;ve successfully authenticated, but GitHub does not provide 
     </summary>
     
     
-      <category term="JAVA" scheme="http://www.luckyonecn.com/tags/JAVA/"/>
-    
       <category term="Web Service" scheme="http://www.luckyonecn.com/tags/Web-Service/"/>
     
       <category term="CXF" scheme="http://www.luckyonecn.com/tags/CXF/"/>
+    
+      <category term="JAVA" scheme="http://www.luckyonecn.com/tags/JAVA/"/>
     
       <category term="SPI(Service Provider Interface)" scheme="http://www.luckyonecn.com/tags/SPI-Service-Provider-Interface/"/>
     
@@ -819,33 +850,6 @@ CGAffineTransform currentTransform = compass.transform;CGAffineTransform newTran
       <category term="WhirlyGlobe" scheme="http://www.luckyonecn.com/tags/WhirlyGlobe/"/>
     
       <category term="Map" scheme="http://www.luckyonecn.com/tags/Map/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>hello hexo! 搭建hexo中参考的资料</title>
-    <link href="http://www.luckyonecn.com/blog/reference-material-for-hexo/"/>
-    <id>http://www.luckyonecn.com/blog/reference-material-for-hexo/</id>
-    <published>2014-05-12T10:06:44.000Z</published>
-    <updated>2014-08-03T06:45:21.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="http://hexo.io/docs/" target="_blank" rel="external">hexo官方文档</a><br><strong>官方文档总是最先参考的</strong></p>
-<p><a href="http://ibruce.info/2013/11/22/hexo-your-blog/" target="_blank" rel="external">hexo你的博客</a><br><strong>无意间看到这篇博客才突发奇想搞一个</strong></p>
-<p><a href="http://zipperary.com/2013/05/28/hexo-guide-1/" target="_blank" rel="external">hexo系列教程：（一）hexo介绍</a><br><strong>整个系列写的非常详细，有时间应该从头到尾看一遍</strong></p>
-<p><strong>搭建过程中遇到个小问题，最开始通过https使用用户名和密码连接github，后来换成ssh后仍然需要用户名和密码，最后参考<a href="http://www.studio2013.com/2013/07/21/hexo-github-deploy/" target="_blank" rel="external">这篇文章</a>解决了问题：</strong></p>
-<blockquote>
-<p>1、因为我们这里讲的是SSH连接方式，这也是我认为最可靠，最方便的一种连接方式，但有可能会出现每次push时，都需要输入用户名和密码，而我们用ssh -T git@github.com时，是没有问题的，这种情况多发生之前创建过HTTPS登陆方式，但信息没有清除干净，解决方法是，在git配置目录或hexo.deploy.git下，打开config文件，将HTTPS开头的字符串，改为it@github.com:账户名/账户名.github.com.git方式。</p>
-</blockquote>
-]]></content>
-    
-    <summary type="html">
-    
-      hexo官方文档http://hexo.io/docs/，hexo你的博客http://ibruce.info/2013/11/22/hexo-your-blog/，hexo系列教程：（一）hexo介绍http://zipperary.com/2013/05/28/hexo-guide-1/
-    
-    </summary>
-    
-    
-      <category term="hexo" scheme="http://www.luckyonecn.com/tags/hexo/"/>
     
   </entry>
   

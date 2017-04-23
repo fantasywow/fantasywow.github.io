@@ -5,15 +5,15 @@
 <head>
   <meta charset="utf-8">
   
-  <title>归档：2017/3 | LucKy_one&#39;s blog</title>
+  <title>JDK8中的effectively final | LucKy_one&#39;s blog</title>
   <meta name="author" content="Liu Tianhe">
   
-  <meta name="description" content="待完善～～">
+  <meta name="description" content="根据JDK8中的effectively final,闭包中访问外部变量不再必须指定为final">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
+  <meta property="og:title" content="JDK8中的effectively final"/>
   <meta property="og:site_name" content="LucKy_one&#39;s blog"/>
 
   
@@ -103,31 +103,101 @@ body{ -webkit-animation: bugfix infinite 1s; }
   	<div class="inner">
       <div class="padding">
     		
-          <h2>Always aiming higher</h2>
+          <h1>JDK8中的effectively final</h1>
+          <ul>
+            <li>
+              <span class="heading-span">Posted on: </span>
+              <time datetime="2017-04-23T08:27:44.000Z">2017-04-23</time>
+            </li>
+            
+              <li>
+                <span class="heading-span">By: </span>
+
+                
+                  <a href="/">Liu Tianhe</a>
+                
+
+              </li>
+            
+          </ul>
         
       </div>
   	</div>
   </div>
   <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper" class="padding">
-<h2 class="archive-title">2017/3</h2>
-
-
-  <div class="archive">
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2017-03-23T10:41:16.000Z"><a href="/blog/junit-jndi-Spring/">2017-03-23</a></time>
-            
-              <h1 class="title"><a href="/blog/junit-jndi-Spring/">在Spring中使用Junit4测试时访问JNDI资源</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
+    <div id="main-col" class="alignleft"><div id="wrapper" class="padding"><article class="post">
+  
+  
+    <div class="post-content">
+  
+      
+      <div class="entry">
+        
+          <blockquote>
+<p>However, starting in Java SE 8, a local class can access local variables and parameters of the enclosing block that are final or effectively final. A variable or parameter whose value is never changed after it is initialized is effectively final.<br><a href="https://docs.oracle.com/javase/tutorial/java/javaOO/localclasses.html" target="_blank" rel="external">https://docs.oracle.com/javase/tutorial/java/javaOO/localclasses.html</a></p>
+</blockquote>
+<p>简单来说，如果只读一个变量，不再需要指定成final了。<br>而在之前，常见的匿名内部类访问外部局部变量必须指定成final。</p>
+<p>下面这段代码1.8就可以执行，1.7就会编译报错。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> aa = <span class="number">10</span>;</div><div class="line">    <span class="keyword">final</span> <span class="keyword">int</span> bb = <span class="number">20</span>;</div><div class="line">    Thread t1 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">            System.out.println(aa+bb);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<pre><code>1.7报错内容：Error:(22, 36) java: 从内部类中访问本地变量aa; 需要被声明为最终类型
+</code></pre><p>当你要修改的外部变量时，在1.8下也会直接报错：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> aa = <span class="number">10</span>;</div><div class="line">    <span class="keyword">final</span> <span class="keyword">int</span> bb = <span class="number">20</span>;</div><div class="line">    Thread t1 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">            System.out.println(aa+bb);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">    Thread t2 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">            aa = <span class="number">20</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<pre><code>1.8报错内容Error:(34, 17) java: 从内部类引用的本地变量必须是最终变量或实际上的最终变量
+(needs to be final or effectively final)
+</code></pre>
+        
+      </div>
+      <footer>
+        
+          
+          
+  
+  <div class="tags">
+    <a href="/tags/java/">java</a>
   </div>
+
+          <div class="share">
+  
+</div>
+          
+<nav class="article-nav clearfix">
+ 
+
+<div class="article-next">
+<a href="/blog/junit-jndi-Spring/"  title="在Spring中使用Junit4测试时访问JNDI资源">
+ <span>在Spring中使用Junit4测试时访问JNDI资源
+</span>
+<i class="fa fa-long-arrow-right"></i>
+</a>
+</div>
+
+</nav>
+
+        
+        <div class="clearfix"></div>
+      </footer>
+    </div>
+</article>
+
+
+<section id="comment">
+  <h2 class="title">留言</h2>
+
+  <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+  <script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+  <script>
+    var cloudTieConfig = {
+      url: document.location.href, 
+      sourceId: "",
+      productKey: "2d147f07be2d43959e07e8af9cf3f871",
+      target: "cloud-tie-wrapper"
+    };
+    var yunManualLoad = true;
+    Tie.loader("aHR0cHM6Ly9hcGkuZ2VudGllLjE2My5jb20vcGMvbGl2ZXNjcmlwdC5odG1s", true);
+   </script>
+
+</section>
+
 </div></div>
     <aside id="sidebar" class="alignright"><div class="padding">
 	

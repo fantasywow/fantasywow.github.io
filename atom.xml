@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.luckyonecn.com/"/>
-  <updated>2017-04-23T08:53:12.702Z</updated>
+  <updated>2017-04-23T09:06:19.804Z</updated>
   <id>http://www.luckyonecn.com/</id>
   
   <author>
@@ -20,12 +20,12 @@
     <link href="http://www.luckyonecn.com/blog/effectively-final-JDK-8/"/>
     <id>http://www.luckyonecn.com/blog/effectively-final-JDK-8/</id>
     <published>2017-04-23T08:27:44.000Z</published>
-    <updated>2017-04-23T08:53:12.702Z</updated>
+    <updated>2017-04-23T09:06:19.804Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>However, starting in Java SE 8, a local class can access local variables and parameters of the enclosing block that are final or effectively final. A variable or parameter whose value is never changed after it is initialized is effectively final.<br><a href="https://docs.oracle.com/javase/tutorial/java/javaOO/localclasses.html" target="_blank" rel="external">https://docs.oracle.com/javase/tutorial/java/javaOO/localclasses.html</a></p>
 </blockquote>
-<p>简单来说，如果只读一个变量，不再需要指定成final了。<br>而在之前，常见的匿名内部类访问外部局部变量必须指定成final。</p>
+<p>简单来说，如果只读一个外部变量，不再需要指定成final了。<br>而在之前，常见的匿名内部类访问外部局部变量必须指定成final。</p>
 <p>下面这段代码1.8就可以执行，1.7就会编译报错。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> aa = <span class="number">10</span>;</div><div class="line">    <span class="keyword">final</span> <span class="keyword">int</span> bb = <span class="number">20</span>;</div><div class="line">    Thread t1 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">            System.out.println(aa+bb);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <pre><code>1.7报错内容：Error:(22, 36) java: 从内部类中访问本地变量aa; 需要被声明为最终类型

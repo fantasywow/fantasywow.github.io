@@ -2,44 +2,51 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.luckyonecn.com/about/index.html</loc>
+    
+    <lastmod>2017-07-14T12:20:54.748Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.luckyonecn.com/blog/effectively-final-JDK-8/</loc>
     
-    <lastmod>2017-04-23T09:09:14.479Z</lastmod>
+    <lastmod>2017-04-23T09:09:14.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://www.luckyonecn.com/blog/Dual-Pivot_Quicksort/</loc>
     
-    <lastmod>2017-04-08T07:13:16.552Z</lastmod>
+    <lastmod>2017-04-08T07:13:16.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://www.luckyonecn.com/blog/junit-jndi-Spring/</loc>
     
-    <lastmod>2017-03-23T13:13:37.500Z</lastmod>
+    <lastmod>2017-03-23T13:13:37.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://www.luckyonecn.com/blog/spring-h2/</loc>
     
-    <lastmod>2017-03-23T12:05:08.760Z</lastmod>
+    <lastmod>2017-03-23T12:05:08.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://www.luckyonecn.com/blog/update-hexo-to-3-2-2/</loc>
     
-    <lastmod>2016-10-03T17:26:19.344Z</lastmod>
+    <lastmod>2016-10-03T17:26:19.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://www.luckyonecn.com/blog/Access_controls_in_hubsection/</loc>
     
-    <lastmod>2016-10-03T15:08:51.882Z</lastmod>
+    <lastmod>2016-10-03T15:08:51.000Z</lastmod>
     
   </url>
   

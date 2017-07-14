@@ -282,11 +282,11 @@ Hi XXXXXXX! You&apos;ve successfully authenticated, but GitHub does not provide 
     </summary>
     
     
-      <category term="JAVA" scheme="http://www.luckyonecn.com/tags/JAVA/"/>
-    
       <category term="Web Service" scheme="http://www.luckyonecn.com/tags/Web-Service/"/>
     
       <category term="CXF" scheme="http://www.luckyonecn.com/tags/CXF/"/>
+    
+      <category term="JAVA" scheme="http://www.luckyonecn.com/tags/JAVA/"/>
     
       <category term="SPI(Service Provider Interface)" scheme="http://www.luckyonecn.com/tags/SPI-Service-Provider-Interface/"/>
     

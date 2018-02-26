@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.luckyonecn.com/"/>
-  <updated>2017-04-23T09:09:14.000Z</updated>
+  <updated>2018-02-26T10:32:07.724Z</updated>
   <id>http://www.luckyonecn.com/</id>
   
   <author>
@@ -14,6 +14,25 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2017闲书阅读书目</title>
+    <link href="http://www.luckyonecn.com/blog/2017-reading-list/"/>
+    <id>http://www.luckyonecn.com/blog/2017-reading-list/</id>
+    <published>2018-02-21T13:37:56.000Z</published>
+    <updated>2018-02-26T10:32:07.724Z</updated>
+    
+    <content type="html"><![CDATA[<p>《星巴克-关于咖啡、商业和文化的传奇》<br><img src="https://img1.doubanio.com/lpic/s27283098.jpg" alt=""><br>《随机漫步的傻瓜》<br><img src="https://img1.doubanio.com/lpic/s10406068.jpg" alt=""><br>《像TED一样演讲》<br><img src="https://img1.doubanio.com/lpic/s29591237.jpg" alt=""><br>《红色资本-中国的非凡崛起与脆弱的金融基础》<br><img src="https://img1.doubanio.com/lpic/s27033677.jpg" alt=""><br>《斜杠青年-如何开启你的多重身份》<br><img src="https://img1.doubanio.com/lpic/s29221578.jpg" alt=""><br>《有效资产管理》<br><img src="https://img3.doubanio.com/lpic/s25496345.jpg" alt=""><br>《激荡三十年》<br><img src="https://img3.doubanio.com/lpic/s27433242.jpg" alt=""><br><img src="https://img3.doubanio.com/lpic/s27435865.jpg" alt=""><br>《时运变迁》<br><img src="https://img1.doubanio.com/lpic/s29412297.jpg" alt=""><br>《硅谷钢铁侠》<br><img src="https://img3.doubanio.com/lpic/s28571694.jpg" alt=""><br>《助推》<br><img src="https://img1.doubanio.com/lpic/s28066358.jpg" alt=""><br>《信号》<br><img src="https://img3.doubanio.com/lpic/s29554713.jpg" alt=""><br>《腾讯传》<br><img src="https://img3.doubanio.com/lpic/s29653026.jpg" alt=""></p>
+]]></content>
+    
+    <summary type="html">
+    
+      2017读过的那些闲书。
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>JDK8中的effectively final</title>
@@ -805,51 +824,6 @@ f1g1ns2.dnspod.net
       <category term="DNS" scheme="http://www.luckyonecn.com/tags/DNS/"/>
     
       <category term="DOMAIN" scheme="http://www.luckyonecn.com/tags/DOMAIN/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>在iOS平台上的3D地图框架WhirlyGlobe上实现一个指南针</title>
-    <link href="http://www.luckyonecn.com/blog/implement-compass-on-whirlyglobe/"/>
-    <id>http://www.luckyonecn.com/blog/implement-compass-on-whirlyglobe/</id>
-    <published>2014-05-12T11:06:44.000Z</published>
-    <updated>2014-08-03T06:51:28.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>需要在WhirlyGlobe的3D地图上来实现一个指南针的功能，初步考虑需要以下几个步骤：监测地图位置，改变的时候触发事件——旋转指南针的图片到对应的角度。<br>找到地图的缩放，拖动，旋转的方法后，发现所有涉及角度变换的地方都是改变了Eigen::Quaternionf rotQuat的值。下面介绍下Quaternion：</p>
-<p>Quaternion 的定义<br>四元数一般定义如下： </p>
-<pre><code>q=w+xi+yj+zk
-</code></pre><p>其中 w,x,y,z是实数。同时有:</p>
-<pre><code>i*i=-1 
-j*j=-1    
-k*k=-1
-</code></pre><p>四元数也可以表示为：</p>
-<pre><code>q=[w,v]
-</code></pre><p>其中v=(x,y,z)是矢量，w是标量，虽然v是矢量，但不能简单的理解为3D空间的矢量，它是4维空间中的的矢量，也是非常不容易想像的。  </p>
-<p>通俗的讲，一个四元数（Quaternion）描述了一个旋转轴和一个旋转角度。这个旋转轴和这个角度可以通过 Quaternion::ToAngleAxis转换得到。当然也可以随意指定一个角度一个旋转轴来构造一个Quaternion。这个角度是相对于单位四元数而言的，也可以说是相对于物体的初始方向而言的。  </p>
-<p>当用一个四元数乘以一个向量时，实际上就是让该向量围绕着这个四元数所描述的旋转轴，转动这个四元数所描述的角度而得到的向量。<br>（摘自<a href="http://www.linuxgraphics.cn/opengl/opengl_quaternion.html）" target="_blank" rel="external">http://www.linuxgraphics.cn/opengl/opengl_quaternion.html）</a>  </p>
-<p>简单来说Quaternion是用来表示旋转的，地图所存储的Quaternion变量表示了从初始位置到当前位置的旋转变量，这样我们可以通过计算北极点（0，0，1）经过旋转之后位置：</p>
-<pre><code>Eigen::Vector3f northPole = (rot * Eigen::Vector3f(0,0,1)).normalized();
-</code></pre><p>P.S. Eigen是一个非常著名的C++数学库；<br>然后就可以算出所需要的角度了：</p>
-<pre><code>float angle = atan2(northPole.x(), northPole.y());//atan2为math.h下的C函数
-</code></pre><p>UIVIEW有一个transform属性来负责控制变型的，我们可以创建一个旋转变换来旋转图片，每次旋转当前的角度和上次的差值。</p>
-<pre><code>CGFloat rotation = 0.0 -(lastCompassAngle-angle); //lastCompassAngle存储了上次的角度
-CGAffineTransform currentTransform = compass.transform;CGAffineTransform newTransform = CGAffineTransformRotate(currentTransform,rotation);
-[compass setTransform:newTransform];lastCompassAngle = angle;
-</code></pre><p>OK大功告成！！<br>参考文章：<br><a href="http://www.cppblog.com/heath/archive/2009/12/13/103127.html" target="_blank" rel="external">http://www.cppblog.com/heath/archive/2009/12/13/103127.html</a><br><a href="http://www.linuxgraphics.cn/opengl/opengl_quaternion.html" target="_blank" rel="external">http://www.linuxgraphics.cn/opengl/opengl_quaternion.html</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      需要在WhirlyGlobe的3D地图上来实现一个指南针的功能，初步考虑需要以下几个步骤：监测地图位置，改变的时候触发事件——旋转指南针的图片到对应的角度。
-    
-    </summary>
-    
-    
-      <category term="iOS" scheme="http://www.luckyonecn.com/tags/iOS/"/>
-    
-      <category term="WhirlyGlobe" scheme="http://www.luckyonecn.com/tags/WhirlyGlobe/"/>
-    
-      <category term="Map" scheme="http://www.luckyonecn.com/tags/Map/"/>
     
   </entry>
   

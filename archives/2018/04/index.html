@@ -5,15 +5,15 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Apache CXF部署到WebSphere Application Server | LucKy_one&#39;s blog</title>
+  <title>归档：2018/4 | LucKy_one&#39;s blog</title>
   <meta name="author" content="Liu Tianhe">
   
-  <meta name="description" content="在WebSphere上部署Apache CXF实现的Web Service服务注意事项。">
+  <meta name="description" content="待完善～～">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="Apache CXF部署到WebSphere Application Server"/>
+  
   <meta property="og:site_name" content="LucKy_one&#39;s blog"/>
 
   
@@ -113,108 +113,31 @@ body{ -webkit-animation: bugfix infinite 1s; }
   	<div class="inner">
       <div class="padding">
     		
-          <h1>Apache CXF部署到WebSphere Application Server</h1>
-          <ul>
-            <li>
-              <span class="heading-span">Posted on: </span>
-              <time datetime="2016-08-09T10:54:09.000Z">2016-08-09</time>
-            </li>
-            
-              <li>
-                <span class="heading-span">By: </span>
-
-                
-                  <a href="/">Liu Tianhe</a>
-                
-
-              </li>
-            
-          </ul>
+          <h2>Always aiming higher</h2>
         
       </div>
   	</div>
   </div>
   <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper" class="padding"><article class="post">
-  
-  
-    <div class="post-content">
-  
-      
-      <div class="entry">
-        
-          <p>在开发过程中CXF是部署的本地的Tomcat上的，开发完并用SoapUI简单测试过之后开始准备部署到测试环境上，测试环境是使用的WebSphere Application Server 8.0.0.5版本。<br>部署上去后访问wsdl页面报error500，JVMVRFY013错误，头一次看到JVM错误。。。</p>
-<p>首先看了ApacheCXF官网的文章：<br><a href="http://cxf.apache.org/docs/application-server-specific-configuration-guide.html#ApplicationServerSpecificConfigurationGuide-ForWebSphere6.1.0.29+,V7andV8" target="_blank" rel="external">application-server-specific-configuration-guide.html#ApplicationServerSpecificConfigurationGuide-ForWebSphere6.1.0.29+,V7andV8</a><br>以及IBM的文档：<br><a href="http://public.dhe.ibm.com/software/dw/wes/1001_thaker/1001_thaker.pdf" target="_blank" rel="external">1001_thaker.pdf</a>。</p>
-<p>1.参照里面说的确认Class loader设置成了<code>Classes loaded with local class loader first(parent last)</code>。<br>2.设置JVM参数<code>-Dcom.ibm.websphere.webservices.DisableIBMJAXWSEngine=true</code>（或者修改war包里的<code>WebContent/META-INF/MANIFEST.MF</code>添加<code>DisableIBMJAXWSEngine:true</code>）来禁用了IBM JAX-WS implementation。</p>
-<p>修改完之后依然same error…<br>于是乎想着更换下CXF的版本从2.3.9换成2.7.18（因为要注册到ESB上，一开始给我们的推荐版本就是2.3.9没敢直接换到3.X.X），突然间，奇迹发生了，wsdl页面能正常显示出来了，可惜高兴没多久就发现调用服务的时候依然会报错same error。。。。</p>
-<p>最后。。再一次。。被Stackoverflow拯救了</p>
-<pre><code>then deleting from our deploy the following jar:
-    activation-*,
-    stax-api-* (but not stax2-api!),
-    jaxb-api-*,
-    jaxb-impl-*,
-    xercesImpl-*,
-    xml-apis-*
-</code></pre><p>发现项目中包含了activation.1.1.1.jar(其实并不知道这个jar包是干什么的。。),删了之后发现一切正常了！</p>
+    <div id="main-col" class="alignleft"><div id="wrapper" class="padding">
+<h2 class="archive-title">2018/4</h2>
 
-        
-      </div>
-      <footer>
-        
-          
-          
-  
-  <div class="tags">
-    <a href="/tags/Web-Service/">Web Service</a>, <a href="/tags/CXF/">CXF</a>, <a href="/tags/WebSphere/">WebSphere</a>
+
+  <div class="archive">
+    
+      <article class="post">
+        <div class="post-content">
+          <header>
+            <div class="icon"></div>
+            <time datetime="2018-04-05T06:39:36.000Z"><a href="/blog/Robo-Advisor/">2018-04-05</a></time>
+            
+              <h1 class="title"><a href="/blog/Robo-Advisor/">智能投顾</a></h1>
+            
+          </header>
+        </div>
+      </article>
+    
   </div>
-
-          <div class="share">
-  
-</div>
-          
-<nav class="article-nav clearfix">
- 
- <div class="article-prev" >
- <a href="/blog/sql-join-on-using/" title="sql中join on和join using的异同">
-  <i class="fa fa-long-arrow-left"></i>
-  <span>
-  sql中join on和join using的异同</span>
-</a>
-</div>
-
-
-<div class="article-next">
-<a href="/blog/Apache-CXF-override-Provider/"  title="记解决引入CXF的jar包导致异常情况的过程及所学知识">
- <span>记解决引入CXF的jar包导致异常情况的过程及所学知识
-</span>
-<i class="fa fa-long-arrow-right"></i>
-</a>
-</div>
-
-</nav>
-
-        
-        <div class="clearfix"></div>
-      </footer>
-    </div>
-</article>
-
-
-<section id="comment">
-<div id="disqus_thread"></div>
-<script>
-
-/*disqus代码*/
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://www-luckyonecn-com.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-
-</section>
-
 </div></div>
     <aside id="sidebar" class="alignright"><div class="padding">
 	

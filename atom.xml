@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.luckyonecn.com/"/>
-  <updated>2018-02-26T10:32:07.724Z</updated>
+  <updated>2018-04-05T06:52:18.708Z</updated>
   <id>http://www.luckyonecn.com/</id>
   
   <author>
@@ -14,6 +14,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>智能投顾</title>
+    <link href="http://www.luckyonecn.com/blog/Robo-Advisor/"/>
+    <id>http://www.luckyonecn.com/blog/Robo-Advisor/</id>
+    <published>2018-04-05T06:39:36.000Z</published>
+    <updated>2018-04-05T06:52:18.708Z</updated>
+    
+    <content type="html"><![CDATA[<p>构建智能投顾系统的一些感悟</p>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>1.马科维茨均值方差模型奠定了现代投资组合理论，后来人的各种模型也都没有脱离用风险和回报两个维度来衡量一种资产。<br>2.在中国能够覆盖绝大多数种类的资产的就只有公募基金。<br>3.通过公募基金组建投资组合又面临一个问题，是选用被动型的公募基金还是主动型公募基金，也就是选择投指数还是试图寻找更好的主动管理的公募基金来寻求超额收益。</p>
+<h2 id="智能投顾-VS-FOF"><a href="#智能投顾-VS-FOF" class="headerlink" title="智能投顾 VS FOF"></a>智能投顾 VS FOF</h2><p>1.FOF更加标准化。<br>2.智能投顾的持仓以及变动更加透明，调仓需要客户授权。<br>3.智能投顾理想的千人千面看似很美好，个人感觉实际上却很难做到（大多数人的实际风险承受能力和他自己认为的承受能力并不匹配）</p>
+<h2 id="模型："><a href="#模型：" class="headerlink" title="模型："></a>模型：</h2><p>1.最优比例-根据金融模型算出最优的资产配置比例，触发调仓的信号。<br>2.基金池-如果选择主动型公募基金还涉及到是量化选基金还是依赖经验主义选基金。</p>
+<h2 id="交易系统："><a href="#交易系统：" class="headerlink" title="交易系统："></a>交易系统：</h2><p>1.申购赎回调仓是一组交易，其中一只交易失败时的处理方案。<br>2.考虑首次追加最小申购金额，最低留存，步长等公募基金限制（理想情况是选择那些限制可以忽略的公募基金，避免申购赎回调仓时的一系列衍生的交易金额限制）。<br>3.分级的货币基金，升级降级时引发的各种问题。（如果智能投顾系统和原有的基金代销系统使用同一基金交易账号，就不可避免这面对这一坑爹问题）</p>
+<hr>
+<p>先写这么多以后再补充</p>
+]]></content>
+    
+    <summary type="html">
+    
+      构建智能投顾系统的一些感悟
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>2017闲书阅读书目</title>
@@ -301,11 +326,11 @@ Hi XXXXXXX! You&apos;ve successfully authenticated, but GitHub does not provide 
     </summary>
     
     
-      <category term="JAVA" scheme="http://www.luckyonecn.com/tags/JAVA/"/>
-    
       <category term="Web Service" scheme="http://www.luckyonecn.com/tags/Web-Service/"/>
     
       <category term="CXF" scheme="http://www.luckyonecn.com/tags/CXF/"/>
+    
+      <category term="JAVA" scheme="http://www.luckyonecn.com/tags/JAVA/"/>
     
       <category term="SPI(Service Provider Interface)" scheme="http://www.luckyonecn.com/tags/SPI-Service-Provider-Interface/"/>
     
@@ -390,18 +415,16 @@ Hi XXXXXXX! You&apos;ve successfully authenticated, but GitHub does not provide 
     <link href="http://www.luckyonecn.com/blog/Dual-Pivot_Quicksort/"/>
     <id>http://www.luckyonecn.com/blog/Dual-Pivot_Quicksort/</id>
     <published>2014-08-31T09:09:09.000Z</published>
-    <updated>2017-04-08T07:13:16.000Z</updated>
+    <updated>2018-04-05T06:44:40.190Z</updated>
     
     <content type="html"><![CDATA[<p>课本上常见的快速排序都是选择一个枢纽元（Pivot），基于这个枢纽元从前后双向扫描分成大于枢纽元和小于枢纽元的。而从JDK 7开始，java.util.Arrays.sort()使用双基准快速排序（Dual-Pivot Quicksort）作为实现。</p>
 <p>—update JDK7使用双基准快速排序来排序基本元素，针对对象用TimSort<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">public static void sort(int[] a) &#123;</div><div class="line">    DualPivotQuicksort.sort(a, 0, a.length - 1, null, 0, 0); </div><div class="line">&#125;</div><div class="line">public static void sort(Object[] a) &#123;</div><div class="line">    if (LegacyMergeSort.userRequested) //java -Djava.util.Arrays.useLegacyMergeSort=true 这个是运行时配置的</div><div class="line">        legacyMergeSort(a);</div><div class="line">    else</div><div class="line">        ComparableTimSort.sort(a, 0, a.length, null, 0, 0);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>###传统快速排序：</p>
-<ol>
+<h3 id="传统快速排序："><a href="#传统快速排序：" class="headerlink" title="传统快速排序："></a>传统快速排序：</h3><ol>
 <li>选择枢纽元pivot,有很多种选法，但都只有一个。</li>
 <li>基于枢纽元分成大于和小于的两部分，并且枢纽元放到最终的位置。</li>
 <li>递归排序大于和小于的两部分。</li>
 </ol>
-<p>###双基准快速排序：</p>
-<ol>
+<h3 id="双基准快速排序："><a href="#双基准快速排序：" class="headerlink" title="双基准快速排序："></a>双基准快速排序：</h3><ol>
 <li>对于长度小于17的数组使用插入排序(常见优化步骤，传统快排也有应用)。</li>
 <li>选择两个枢纽元p1,p2，一般选择起始元素a[left]和末尾元素a[right]（有其他选取方式）。</li>
 <li>假设p1&lt;p2，如果不是就交换。</li>
@@ -796,34 +819,6 @@ git config --global core.safecrlf warn
     
     
       <category term="Git" scheme="http://www.luckyonecn.com/tags/Git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>绑定自己的域名以及将DNS更换为DNSPOD</title>
-    <link href="http://www.luckyonecn.com/blog/change-domain-name-and-name-server/"/>
-    <id>http://www.luckyonecn.com/blog/change-domain-name-and-name-server/</id>
-    <published>2014-05-14T02:01:52.000Z</published>
-    <updated>2014-08-03T06:46:57.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>首选你需要买一个域名，经过对比，个人感觉对于个人用户godaddy明显优于万网，最重要的是价格便宜！各种优惠，我通过google搜索godaddy的第一个广告链接进去发现一个.com的域名也才五十多，比用网上找的优惠卷都便宜，没想到google的广告还有这种福利。。。购买完域名后发现都说godaddy的DNS容易悲剧，于是要换成DNSPOD的。</p>
-<p>首先参考<a href="https://support.dnspod.cn/Kb/showarticle/tsid/42/" target="_blank" rel="external"><br>Godaddy注册商域名修改DNS地址</a>，进入godaddy的域名管理页面，将你的域名的nameserver改成：</p>
-<pre><code>f1g1ns1.dnspod.net
-f1g1ns2.dnspod.net
-</code></pre><p>注意当你的nameserver改成DNSPOD后godaddy里面的DNS Zone file 里面的设置就没有意义了，你需要到DNSPOD上注册个账号在上面配置CNAME。</p>
-<p>最后还需要在github上添加CNAME记录，你可以直接在hexo的source目录下添加个CNAME文件，文件内容是你的域名，也可以手动在github上你的博客repository里添加CNAME文件。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      首选你需要买一个域名，经过对比，个人感觉对于个人用户godaddy明显优于万网，最重要的是价格便宜！各种优惠，我通过google搜索godaddy的第一个广告链接进去发现一个.com的域名也才五十多，比用网上找的优惠卷都便宜，没想到google的广告还有这种福利。。。购买完域名后发现都说godaddy的DNS容易悲剧，于是要换成DNSPOD的。
-    
-    </summary>
-    
-    
-      <category term="DNS" scheme="http://www.luckyonecn.com/tags/DNS/"/>
-    
-      <category term="DOMAIN" scheme="http://www.luckyonecn.com/tags/DOMAIN/"/>
     
   </entry>
   

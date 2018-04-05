@@ -145,14 +145,12 @@ body{ -webkit-animation: bugfix infinite 1s; }
         
           <p>课本上常见的快速排序都是选择一个枢纽元（Pivot），基于这个枢纽元从前后双向扫描分成大于枢纽元和小于枢纽元的。而从JDK 7开始，java.util.Arrays.sort()使用双基准快速排序（Dual-Pivot Quicksort）作为实现。</p>
 <p>—update JDK7使用双基准快速排序来排序基本元素，针对对象用TimSort<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">public static void sort(int[] a) &#123;</div><div class="line">    DualPivotQuicksort.sort(a, 0, a.length - 1, null, 0, 0); </div><div class="line">&#125;</div><div class="line">public static void sort(Object[] a) &#123;</div><div class="line">    if (LegacyMergeSort.userRequested) //java -Djava.util.Arrays.useLegacyMergeSort=true 这个是运行时配置的</div><div class="line">        legacyMergeSort(a);</div><div class="line">    else</div><div class="line">        ComparableTimSort.sort(a, 0, a.length, null, 0, 0);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>###传统快速排序：</p>
-<ol>
+<h3 id="传统快速排序："><a href="#传统快速排序：" class="headerlink" title="传统快速排序："></a>传统快速排序：</h3><ol>
 <li>选择枢纽元pivot,有很多种选法，但都只有一个。</li>
 <li>基于枢纽元分成大于和小于的两部分，并且枢纽元放到最终的位置。</li>
 <li>递归排序大于和小于的两部分。</li>
 </ol>
-<p>###双基准快速排序：</p>
-<ol>
+<h3 id="双基准快速排序："><a href="#双基准快速排序：" class="headerlink" title="双基准快速排序："></a>双基准快速排序：</h3><ol>
 <li>对于长度小于17的数组使用插入排序(常见优化步骤，传统快排也有应用)。</li>
 <li>选择两个枢纽元p1,p2，一般选择起始元素a[left]和末尾元素a[right]（有其他选取方式）。</li>
 <li>假设p1&lt;p2，如果不是就交换。</li>
@@ -238,6 +236,10 @@ s.setAttribute('data-timestamp', +new Date());
   <ul class="entry">
     
       <li>
+        <a href="/blog/Robo-Advisor/">智能投顾</a>
+      </li>
+    
+      <li>
         <a href="/blog/2017-reading-list/">2017闲书阅读书目</a>
       </li>
     
@@ -251,10 +253,6 @@ s.setAttribute('data-timestamp', +new Date());
     
       <li>
         <a href="/blog/spring-h2/">Spring+Maven+H2（Jave配置,非Spring Boot）</a>
-      </li>
-    
-      <li>
-        <a href="/blog/update-hexo-to-3-2-2/">升级hexo至3.2.2</a>
       </li>
     
   </ul>

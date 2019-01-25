@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.luckyonecn.com/blog/2018-reading-list/</loc>
+    
+    <lastmod>2018-12-31T14:39:56.859Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.luckyonecn.com/blog/2017-reading-list/</loc>
+    
+    <lastmod>2018-12-15T07:28:52.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.luckyonecn.com/blog/Robo-Advisor/</loc>
     
     <lastmod>2018-04-05T09:51:51.245Z</lastmod>
@@ -12,13 +26,6 @@
     <loc>http://www.luckyonecn.com/blog/Dual-Pivot_Quicksort/</loc>
     
     <lastmod>2018-04-05T06:44:40.190Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.luckyonecn.com/blog/2017-reading-list/</loc>
-    
-    <lastmod>2018-02-26T10:32:07.724Z</lastmod>
     
   </url>
   

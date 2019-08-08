@@ -1,0 +1,390 @@
+<!DOCTYPE HTML>
+
+    <html lang="zh-Hans">
+  
+<head>
+  <meta charset="utf-8">
+  
+  <title>数据挖掘比赛Handbook | LucKy_one&#39;s blog</title>
+  <meta name="author" content="Liu Tianhe">
+  
+  <meta name="description" content="参加数据挖掘比赛的总结">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="数据挖掘比赛Handbook"/>
+  <meta property="og:site_name" content="LucKy_one&#39;s blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+    <meta http-equiv="Content-Language" content="zh-Hans"/>
+  
+
+  <link href="/img/favicon.ico" rel="icon">
+  
+    <link rel="apple-touch-icon" href="/img/apple-icon.png">
+    <link rel="apple-touch-icon-precomposed" href="/img/apple-icon.png">
+    
+
+  <link rel="alternate" href="/atom.xml" title="LucKy_one&#39;s blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+  
+  <!-- Chinese readability improment -->
+  <style type="text/css">
+    article {font-weight: 400;letter-spacing: .01rem;}
+    article .entry{line-height:2;}
+  </style>
+  
+  
+  <style type="text/css">
+  /* Tim Pietrusky advanced checkbox hack (Android <= 4.1.2) */
+body{ -webkit-animation: bugfix infinite 1s; }
+@-webkit-keyframes bugfix { from {padding:0;} to {padding:0;} }
+</style>
+
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-51092894-1', 'auto');
+  ga('send', 'pageview');
+ 
+</script>
+
+
+
+
+  
+    
+      <link href='//fonts.googleapis.com/css?family=Open+Sans:300,400|Playball' rel='stylesheet' type='text/css'>
+    
+  <link href='http://apps.bdimg.com/libs/fontawesome/4.1.0/css/font-awesome.css' rel='stylesheet' type='text/css'>
+  <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+  
+
+  <!-- 百度统计  -->
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+   var hm = document.createElement("script");
+   hm.src = "https://hm.baidu.com/hm.js?1e76131925f8a8a74864fc1a14e02837";
+   var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="padding">
+	<div class="alignleft logo">
+	  <h1><a href="/">LucKy_one&#39;s blog</a></h1>
+	</div>
+	<nav id="main-nav" class="alignright">
+		<input type="checkbox" id="toggle" />
+		<label for="toggle" class="toggle" data-open="Main Menu" data-close="Close Menu" onclick><i class="fa fa-bars"></i></label>
+	  <ul class="menu">
+	    
+	      <li><a href="/">Home</a></li>
+	    
+	      <li><a href="/archives">Archives</a></li>
+	    
+	      <li><a href="/about">About</a></li>
+	    
+	    
+	    	<li><a href="/atom.xml" target="_blank" title="bruce tan blog rss" class="rss-top"><i class="fa fa-rss"></i></a></li>
+	    
+	  </ul>
+	</nav>
+	<div class="clearfix"></div>
+</div>
+</header>
+  <div id="page-heading-wrap">
+  	<div class="inner">
+      <div class="padding">
+    		
+          <h1>数据挖掘比赛Handbook</h1>
+          <ul>
+            <li>
+              <span class="heading-span">Posted on: </span>
+              <time datetime="2019-08-08T05:09:13.000Z">2019-08-08</time>
+            </li>
+            
+              <li>
+                <span class="heading-span">By: </span>
+
+                
+                  <a href="/">Liu Tianhe</a>
+                
+
+              </li>
+            
+          </ul>
+        
+      </div>
+  	</div>
+  </div>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper" class="padding"><article class="post">
+  
+  
+    <div class="post-content">
+  
+      
+      <div class="entry">
+        
+          <h2 id="Pandas常用操作"><a href="#Pandas常用操作" class="headerlink" title="Pandas常用操作"></a>Pandas常用操作</h2><p>去重</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">BASE_EXCG = BASE_EXCG.drop_duplicates(subset=<span class="keyword">None</span>, keep=<span class="string">'first'</span>, inplace=<span class="keyword">False</span>)</div></pre></td></tr></table></figure>
+<p>合并</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">IDV_TD = pd.merge(IDV_TD, BASE_EXCG, left_on=<span class="string">'CCY_CD'</span>, right_on=<span class="string">'CCY_LETE_CD'</span>, how=<span class="string">'left'</span>)</div></pre></td></tr></table></figure>
+<p>删除</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">IDV_TD.drop([<span class="string">'RAT_CTG'</span>,<span class="string">'FXDI_SA_ACCM'</span>], axis=<span class="number">1</span>,inplace =<span class="keyword">True</span>)</div></pre></td></tr></table></figure>
+<p>运算</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">IDV_TD = IDV_TD.eval(<span class="string">'CRBAL_RMB = CRBAL * RMB_MID_PRIC'</span>)</div></pre></td></tr></table></figure>
+<p>索引重置</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">IDV_TD_after.reset_index()</div></pre></td></tr></table></figure>
+<p>修改列名</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">IDV_TD_after_after.rename(columns= <span class="keyword">lambda</span> x:x <span class="keyword">if</span> x==<span class="string">'CUST_NO'</span> <span class="keyword">else</span> IDV_TD_<span class="string">'+x).to_csv("./data/IDV_TD_out.csv",index = False)</span></div></pre></td></tr></table></figure>
+<p>修改字段类型</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">IDV_CUST_BASIC[<span class="string">'OCP_CD'</span>]=IDV_CUST_BASIC[<span class="string">'OCP_CD'</span>].astype(str)</div></pre></td></tr></table></figure>
+<p>填充NaN</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">IDV_CUST_BASIC[<span class="string">'OCP_CD'</span>].fillna(<span class="string">'NULL'</span>,inplace=<span class="keyword">True</span>)</div></pre></td></tr></table></figure>
+<p>groupby+join</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">IDV_TD_group = IDV_TD.groupby([<span class="string">'CUST_NO'</span>,<span class="string">'DATA_DAT'</span>])</div><div class="line">IDV_TD_after = IDV_TD_group.sum().join(IDV_TD_group.size().to_frame(name=<span class="string">'count'</span>)).join(IDV_TD_group[<span class="string">'CRBAL_RMB'</span>].max(),rsuffix = <span class="string">'max'</span>)</div></pre></td></tr></table></figure>
+<p>新建一列</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">IDV_TD_after_after[<span class="string">'HAS_IDV_TD'</span>] = <span class="number">1</span></div></pre></td></tr></table></figure>
+<h2 id="常用编码方式"><a href="#常用编码方式" class="headerlink" title="常用编码方式"></a>常用编码方式</h2><h3 id="One-hot"><a href="#One-hot" class="headerlink" title="One-hot"></a>One-hot</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#one-hot encoding</span></div><div class="line">n_columns = [<span class="string">'CCY_CD'</span>,<span class="string">'RDEP_IND_CD'</span>,<span class="string">'ACCT_STS_CD'</span>,<span class="string">'DP_DAY_CD'</span>,<span class="string">'RDEP_DP_DAY_CD'</span>]</div><div class="line">dummy_df = pd.get_dummies(IDV_TD[n_columns],columns=n_columns)</div><div class="line">IDV_TD = pd.concat([IDV_TD, dummy_df], axis=<span class="number">1</span>)</div><div class="line">IDV_TD.drop(n_columns, axis=<span class="number">1</span>,inplace =<span class="keyword">True</span>)</div></pre></td></tr></table></figure>
+<h3 id="Label"><a href="#Label" class="headerlink" title="Label"></a>Label</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#label encoding</span></div><div class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> LabelEncoder</div><div class="line">le = LabelEncoder()</div><div class="line">DP_DAY_CD_lset = [<span class="string">"Y005"</span>,<span class="string">"Y003"</span>,<span class="string">"Y002"</span>,<span class="string">"Y001"</span>,<span class="string">"M006"</span>,<span class="string">"M003"</span>,<span class="string">"M001"</span>,<span class="string">"D7"</span>,<span class="string">"D1"</span>,<span class="string">"#"</span>,<span class="string">"NULL"</span>]</div><div class="line">le.fit(DP_DAY_CD_lset)</div><div class="line">IDV_TD[<span class="string">"DP_DAY_CD"</span>] = le.transform(IDV_TD[<span class="string">"DP_DAY_CD"</span>])</div><div class="line">IDV_TD[<span class="string">'RDEP_DP_DAY_CD'</span>] = le.transform(IDV_TD[<span class="string">'RDEP_DP_DAY_CD'</span>])</div></pre></td></tr></table></figure>
+<h3 id="Mean-encoding"><a href="#Mean-encoding" class="headerlink" title="Mean encoding"></a>Mean encoding</h3><p>定义函数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#mean encoding</span></div><div class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> KFold,StratifiedKFold </div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MeanEncoder</span>:</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, categorical_features, n_splits=<span class="number">5</span>, target_type=<span class="string">'classification'</span>, prior_weight_func=None)</span>:</span></div><div class="line">    <span class="string">"""</span></div><div class="line">    :param categorical_features: list of str, the name of the categorical columns to encode</div><div class="line">    :param n_splits: the number of splits used in mean encoding</div><div class="line">    :param target_type: str, 'regression' or 'classification'</div><div class="line">    :param prior_weight_func:</div><div class="line">    a function that takes in the number of observations, and outputs prior weight</div><div class="line">    when a dict is passed, the default exponential decay function will be used:</div><div class="line">    k: the number of observations needed for the posterior to be weighted equally as the prior</div><div class="line">    f: larger f --&gt; smaller slope</div><div class="line">    """</div><div class="line"></div><div class="line">    self.categorical_features = categorical_features</div><div class="line">    self.n_splits = n_splits</div><div class="line">    self.learned_stats = &#123;&#125;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> target_type == <span class="string">'classification'</span>:</div><div class="line">        self.target_type = target_type</div><div class="line">        self.target_values = []</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        self.target_type = <span class="string">'regression'</span></div><div class="line">        self.target_values = <span class="keyword">None</span></div><div class="line"></div><div class="line">    <span class="keyword">if</span> isinstance(prior_weight_func, dict):</div><div class="line">        self.prior_weight_func = eval(<span class="string">'lambda x: 1 / (1 + np.exp((x - k) / f))'</span>, dict(prior_weight_func, np=np))</div><div class="line">    <span class="keyword">elif</span> callable(prior_weight_func):</div><div class="line">        self.prior_weight_func = prior_weight_func</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        self.prior_weight_func = <span class="keyword">lambda</span> x: <span class="number">1</span> / (<span class="number">1</span> + np.exp((x - <span class="number">2</span>) / <span class="number">1</span>))</div><div class="line"></div><div class="line"><span class="meta">@staticmethod</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">mean_encode_subroutine</span><span class="params">(X_train, y_train, X_test, variable, target, prior_weight_func)</span>:</span></div><div class="line">    X_train = X_train[[variable]].copy()</div><div class="line">    X_test = X_test[[variable]].copy()</div><div class="line"></div><div class="line">    <span class="keyword">if</span> target <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</div><div class="line">        nf_name = <span class="string">'&#123;&#125;_pred_&#123;&#125;'</span>.format(variable, target)</div><div class="line">        X_train[<span class="string">'pred_temp'</span>] = (y_train == target).astype(int)  <span class="comment"># classification</span></div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        nf_name = <span class="string">'&#123;&#125;_pred'</span>.format(variable)</div><div class="line">        X_train[<span class="string">'pred_temp'</span>] = y_train  <span class="comment"># regression</span></div><div class="line"></div><div class="line">    prior = X_train[<span class="string">'pred_temp'</span>].mean()</div><div class="line">    col_avg_y = X_train.groupby(by=variable, axis=<span class="number">0</span>)[<span class="string">'pred_temp'</span>].agg(&#123;<span class="string">'mean'</span>: <span class="string">'mean'</span>, <span class="string">'beta'</span>: <span class="string">'size'</span>&#125;)</div><div class="line">    col_avg_y[<span class="string">'beta'</span>] = prior_weight_func(col_avg_y[<span class="string">'beta'</span>])</div><div class="line">    col_avg_y[nf_name] = col_avg_y[<span class="string">'beta'</span>] * prior + (<span class="number">1</span> - col_avg_y[<span class="string">'beta'</span>]) * col_avg_y[<span class="string">'mean'</span>]</div><div class="line">    col_avg_y.drop([<span class="string">'beta'</span>, <span class="string">'mean'</span>], axis=<span class="number">1</span>, inplace=<span class="keyword">True</span>)</div><div class="line">    nf_train = X_train.join(col_avg_y, on=variable)[nf_name].values</div><div class="line">    nf_test = X_test.join(col_avg_y, on=variable).fillna(prior, inplace=<span class="keyword">False</span>)[nf_name].values</div><div class="line">    <span class="keyword">return</span> nf_train, nf_test, prior, col_avg_y</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">fit_transform</span><span class="params">(self, X, y)</span>:</span></div><div class="line">    <span class="string">"""</span></div><div class="line">    :param X: pandas DataFrame, n_samples * n_features</div><div class="line">    :param y: pandas Series or numpy array, n_samples</div><div class="line">    :return X_new: the transformed pandas DataFrame containing mean-encoded categorical features</div><div class="line">    """</div><div class="line">    X_new = X.copy()</div><div class="line">    <span class="keyword">if</span> self.target_type == <span class="string">'classification'</span>:</div><div class="line">        skf = StratifiedKFold(self.n_splits)</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        skf = KFold(self.n_splits)</div><div class="line"></div><div class="line">    <span class="keyword">if</span> self.target_type == <span class="string">'classification'</span>:</div><div class="line">        self.target_values = sorted(set(y))</div><div class="line">        self.learned_stats = &#123;<span class="string">'&#123;&#125;_pred_&#123;&#125;'</span>.format(variable, target): [] <span class="keyword">for</span> variable, target <span class="keyword">in</span></div><div class="line">                              itertools.product(self.categorical_features, self.target_values)&#125;</div><div class="line">        <span class="keyword">for</span> variable, target <span class="keyword">in</span> itertools.product(self.categorical_features, self.target_values):</div><div class="line">            nf_name = <span class="string">'&#123;&#125;_pred_&#123;&#125;'</span>.format(variable, target)</div><div class="line">            X_new.loc[:, nf_name] = np.nan</div><div class="line">            <span class="keyword">for</span> large_ind, small_ind <span class="keyword">in</span> skf.split(y, y):</div><div class="line">                nf_large, nf_small, prior, col_avg_y = MeanEncoder.mean_encode_subroutine(</div><div class="line">                    X_new.iloc[large_ind], y.iloc[large_ind], X_new.iloc[small_ind], variable, target, self.prior_weight_func)</div><div class="line">                X_new.iloc[small_ind, <span class="number">-1</span>] = nf_small</div><div class="line">                self.learned_stats[nf_name].append((prior, col_avg_y))</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        self.learned_stats = &#123;<span class="string">'&#123;&#125;_pred'</span>.format(variable): [] <span class="keyword">for</span> variable <span class="keyword">in</span> self.categorical_features&#125;</div><div class="line">        <span class="keyword">for</span> variable <span class="keyword">in</span> self.categorical_features:</div><div class="line">            nf_name = <span class="string">'&#123;&#125;_pred'</span>.format(variable)</div><div class="line">            X_new.loc[:, nf_name] = np.nan</div><div class="line">            <span class="keyword">for</span> large_ind, small_ind <span class="keyword">in</span> skf.split(y, y):</div><div class="line">                nf_large, nf_small, prior, col_avg_y = MeanEncoder.mean_encode_subroutine(</div><div class="line">                    X_new.iloc[large_ind], y.iloc[large_ind], X_new.iloc[small_ind], variable, <span class="keyword">None</span>, self.prior_weight_func)</div><div class="line">                X_new.iloc[small_ind, <span class="number">-1</span>] = nf_small</div><div class="line">                self.learned_stats[nf_name].append((prior, col_avg_y))</div><div class="line">    <span class="keyword">return</span> X_new</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">transform</span><span class="params">(self, X)</span>:</span></div><div class="line">    <span class="string">"""</span></div><div class="line">    :param X: pandas DataFrame, n_samples * n_features</div><div class="line">    :return X_new: the transformed pandas DataFrame containing mean-encoded categorical features</div><div class="line">    """</div><div class="line">    X_new = X.copy()</div><div class="line">    <span class="keyword">if</span> self.target_type == <span class="string">'classification'</span>:</div><div class="line">        <span class="keyword">for</span> variable, target <span class="keyword">in</span> itertools.product(self.categorical_features, self.target_values[:<span class="number">-1</span>]):</div><div class="line">            nf_name = <span class="string">'&#123;&#125;_pred_&#123;&#125;'</span>.format(variable, target)</div><div class="line">            X_new[nf_name] = <span class="number">0</span></div><div class="line">            <span class="keyword">for</span> prior, col_avg_y <span class="keyword">in</span> self.learned_stats[nf_name]:</div><div class="line">                X_new[nf_name] += X_new[[variable]].join(col_avg_y, on=variable).fillna(prior, inplace=<span class="keyword">False</span>)[nf_name]</div><div class="line">            X_new[nf_name] /= self.n_splits</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        <span class="keyword">for</span> variable <span class="keyword">in</span> self.categorical_features:</div><div class="line">            nf_name = <span class="string">'&#123;&#125;_pred'</span>.format(variable)</div><div class="line">            X_new[nf_name] = <span class="number">0</span></div><div class="line">            <span class="keyword">for</span> prior, col_avg_y <span class="keyword">in</span> self.learned_stats[nf_name]:</div><div class="line">                X_new[nf_name] += X_new[[variable]].join(col_avg_y, on=variable).fillna(prior, inplace=<span class="keyword">False</span>)[nf_name]</div><div class="line">            X_new[nf_name] /= self.n_splits</div><div class="line"></div><div class="line">    <span class="keyword">return</span> X_new</div></pre></td></tr></table></figure>
+<p>使用:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#mean-encoding</span></div><div class="line">MeanEncodeFeature = [<span class="string">'PROV_CD'</span>,<span class="string">'NATN_CD'</span>,<span class="string">'CULT_DGR_CD'</span>,<span class="string">'SPEC_TECH_PRFN_QUA_CD'</span>,<span class="string">'OCP_CD'</span>,<span class="string">'RES_CD'</span>]</div><div class="line">ME = MeanEncoder(MeanEncodeFeature)</div><div class="line">ME.fit_transform(IDV_CUST_BASIC_train,IDV_y)</div><div class="line">IDV_CUST_BASIC = ME.transform(IDV_CUST_BASIC)</div></pre></td></tr></table></figure>
+<h2 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h2><h3 id="训练集验证集划分"><a href="#训练集验证集划分" class="headerlink" title="训练集验证集划分"></a>训练集验证集划分</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</div><div class="line">X_dtrain ,X_deval,Y_dtrain,Y_deval = train_test_split(X_train,Y_train,test_size=<span class="number">0.3</span>,random_state=<span class="number">1024</span>,stratify=Y_train)</div></pre></td></tr></table></figure>
+<h3 id="LightGBM"><a href="#LightGBM" class="headerlink" title="LightGBM"></a>LightGBM</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> lightgbm <span class="keyword">as</span> lgb  </div><div class="line"><span class="keyword">import</span> pickle  </div><div class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> roc_auc_score  </div><div class="line"></div><div class="line">lgb_train = lgb.Dataset(X_dtrain, Y_dtrain)  </div><div class="line">lgb_eval = lgb.Dataset(X_deval, Y_deval)  </div><div class="line"></div><div class="line">params = &#123;  </div><div class="line">    <span class="string">'boosting_type'</span>: <span class="string">'gbdt'</span>,  </div><div class="line">    <span class="string">'objective'</span>: <span class="string">'binary'</span>,  </div><div class="line">    <span class="string">'metric'</span>: <span class="string">'auc'</span>, </div><div class="line">    <span class="string">'num_leaves'</span>: <span class="number">20</span>,  </div><div class="line">    <span class="string">'max_depth'</span>: <span class="number">5</span>,  </div><div class="line">    <span class="string">'min_data_in_leaf'</span>: <span class="number">20</span>,  </div><div class="line">    <span class="string">'learning_rate'</span>: <span class="number">0.02</span>,  </div><div class="line">    <span class="string">'feature_fraction'</span>: <span class="number">0.9</span>,  </div><div class="line">    <span class="string">'bagging_fraction'</span>: <span class="number">0.9</span>,  </div><div class="line">    <span class="string">'bagging_freq'</span>: <span class="number">5</span>,  </div><div class="line">    <span class="string">'lambda_l1'</span>: <span class="number">1</span>,</div><div class="line">    <span class="string">'lambda_l2'</span>: <span class="number">0.001</span>,</div><div class="line">    <span class="string">'min_gain_to_split'</span>: <span class="number">0.2</span>,  </div><div class="line">    <span class="string">'verbose'</span>: <span class="number">5</span>,  </div><div class="line">    <span class="string">'is_unbalance'</span>: <span class="keyword">True</span>, <span class="comment">#重要</span></div><div class="line">    <span class="string">'random_state'</span> : <span class="number">1024</span></div><div class="line">&#125;  </div><div class="line"></div><div class="line">gbm = lgb.train(params,  </div><div class="line">                lgb_train,  </div><div class="line">                num_boost_round=<span class="number">2000</span>,  </div><div class="line">                valid_sets=lgb_eval,  </div><div class="line">                early_stopping_rounds=<span class="number">200</span>)</div></pre></td></tr></table></figure>
+<h3 id="导出特征重要性"><a href="#导出特征重要性" class="headerlink" title="导出特征重要性"></a>导出特征重要性</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">importance = gbm.feature_importance()  </div><div class="line">names = gbm.feature_name()  </div><div class="line"><span class="keyword">with</span> open(<span class="string">'./feature_importance.txt'</span>, <span class="string">'w+'</span>) <span class="keyword">as</span> file: </div><div class="line">    <span class="keyword">for</span> index, im <span class="keyword">in</span> enumerate(importance):  </div><div class="line">        string = names[index] + <span class="string">', '</span> + str(im) + <span class="string">'\n'</span>  </div><div class="line">        file.write(string)</div></pre></td></tr></table></figure>
+<h3 id="保存模型"><a href="#保存模型" class="headerlink" title="保存模型"></a>保存模型</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gbm.save_model(<span class="string">'./model.txt'</span>)</div></pre></td></tr></table></figure>
+<p>KFOLD</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> KFold</div><div class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> roc_auc_score</div><div class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> f1_score</div><div class="line"><span class="keyword">import</span> lightgbm <span class="keyword">as</span> lgb</div><div class="line"><span class="keyword">import</span> gc</div><div class="line"></div><div class="line"><span class="comment"># Extract feature names</span></div><div class="line">feature_names = list(X_train.columns)</div><div class="line"><span class="comment"># Create the kfold object</span></div><div class="line">k_fold = KFold(n_splits = <span class="number">5</span>, shuffle = <span class="keyword">True</span>, random_state = <span class="number">50</span>)</div><div class="line">    </div><div class="line"><span class="comment"># Empty array for feature importances</span></div><div class="line">feature_importance_values = np.zeros(len(feature_names))</div><div class="line">    </div><div class="line"><span class="comment"># Empty array for test predictions</span></div><div class="line">target_predictions = np.zeros(target.shape[<span class="number">0</span>])</div><div class="line">    </div><div class="line"><span class="comment"># Empty array for out of fold validation predictions</span></div><div class="line">out_of_fold = np.zeros(X_train.shape[<span class="number">0</span>])</div><div class="line"></div><div class="line">valid_f1 = []</div><div class="line">valid_threshold = []</div><div class="line">valid_auc = []</div><div class="line"><span class="comment"># Iterate through each fold</span></div><div class="line"><span class="keyword">for</span> train_indices, valid_indices <span class="keyword">in</span> k_fold.split(X_train):</div><div class="line">    print(<span class="string">'开始一次迭代'</span>)</div><div class="line">    <span class="comment"># Training data for the fold</span></div><div class="line">    train_features, train_labels = X_train.iloc[train_indices], Y_train.iloc[train_indices]</div><div class="line">    <span class="comment"># Validation data for the fold</span></div><div class="line">    valid_features, valid_labels = X_train.iloc[valid_indices], Y_train.iloc[valid_indices]</div><div class="line">    lgb_train = lgb.Dataset(train_features, train_labels)  </div><div class="line">    lgb_eval = lgb.Dataset(valid_features, valid_labels)  </div><div class="line">    params = &#123;  </div><div class="line">    <span class="string">'boosting_type'</span>: <span class="string">'gbdt'</span>,  </div><div class="line">    <span class="string">'objective'</span>: <span class="string">'binary'</span>,  </div><div class="line">    <span class="string">'metric'</span>: <span class="string">'auc'</span>, </div><div class="line">    <span class="string">'num_leaves'</span>: <span class="number">30</span>,  </div><div class="line">    <span class="string">'max_depth'</span>: <span class="number">6</span>,  </div><div class="line">    <span class="string">'min_data_in_leaf'</span>: <span class="number">20</span>,  </div><div class="line">    <span class="string">'learning_rate'</span>: <span class="number">0.01</span>,  </div><div class="line">    <span class="string">'feature_fraction'</span>: <span class="number">0.9</span>,  </div><div class="line">    <span class="string">'bagging_fraction'</span>: <span class="number">0.9</span>,  </div><div class="line">    <span class="string">'bagging_freq'</span>: <span class="number">5</span>,  </div><div class="line">    <span class="string">'lambda_l1'</span>: <span class="number">1</span>,</div><div class="line">    <span class="string">'lambda_l2'</span>: <span class="number">0.001</span>,</div><div class="line">    <span class="string">'min_gain_to_split'</span>: <span class="number">0.2</span>,  </div><div class="line">    <span class="string">'verbose'</span>: <span class="number">5</span>,  </div><div class="line">    <span class="string">'is_unbalance'</span>: <span class="keyword">True</span>, <span class="comment">#重要</span></div><div class="line">    <span class="string">'random_state'</span> : <span class="number">1024</span></div><div class="line">    &#125;  </div><div class="line">    gbm = lgb.train(params,  </div><div class="line">                lgb_train,  </div><div class="line">                num_boost_round=<span class="number">2000</span>,  </div><div class="line">                verbose_eval = <span class="keyword">False</span>,</div><div class="line">                valid_sets=lgb_eval,  </div><div class="line">                early_stopping_rounds=<span class="number">200</span>)  </div><div class="line">    </div><div class="line">    pred_train = gbm.predict(valid_features, num_iteration=gbm.best_iteration) </div><div class="line">    pred_train =  pd.DataFrame(pred_train)</div><div class="line">    maxf1 = <span class="number">0</span></div><div class="line">    maxi = <span class="number">0</span></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> np.arange(<span class="number">0.2</span>,<span class="number">0.8</span>,<span class="number">0.001</span>):</div><div class="line">        temp = pd.DataFrame(pred_train[<span class="number">0</span>].apply(<span class="keyword">lambda</span> x:<span class="number">1</span> <span class="keyword">if</span> x&gt;i <span class="keyword">else</span> <span class="number">0</span>))</div><div class="line">        score = f1_score(valid_labels,temp)</div><div class="line">        <span class="keyword">if</span> score &gt;maxf1 :</div><div class="line">            maxf1 = score</div><div class="line">            maxi = i</div><div class="line">    valid_f1.append(maxf1)</div><div class="line">    valid_threshold.append(maxi)</div><div class="line">    <span class="comment"># Record the best iteration</span></div><div class="line">    best_iteration = gbm.best_iteration</div><div class="line">    valid_auc.append(gbm.best_score[<span class="string">'valid_0'</span>][<span class="string">'auc'</span>])</div><div class="line">    <span class="comment"># Record the feature importances</span></div><div class="line">    feature_importance_values += gbm.feature_importance() / k_fold.n_splits</div><div class="line">    <span class="comment"># Make predictions</span></div><div class="line">    target_predictions += gbm.predict(target, num_iteration = best_iteration) / k_fold.n_splits   </div><div class="line">    <span class="comment"># Record the out of fold predictions</span></div><div class="line">    out_of_fold[valid_indices] = gbm.predict(valid_features, num_iteration = best_iteration)  </div><div class="line">    <span class="comment"># Clean up memory</span></div><div class="line">    gc.enable()</div><div class="line">    <span class="keyword">del</span> gbm, train_features, valid_features</div><div class="line">    gc.collect()</div><div class="line"></div><div class="line">print(valid_f1,np.mean(valid_f1))</div><div class="line">print(valid_threshold,np.mean(valid_threshold))</div><div class="line">print(valid_auc,np.mean(valid_auc))</div></pre></td></tr></table></figure>
+<h3 id="StackNet"><a href="#StackNet" class="headerlink" title="StackNet"></a>StackNet</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> lightgbm <span class="keyword">as</span> lgb  </div><div class="line"></div><div class="line">lightgbm = lgb.LGBMClassifier(    </div><div class="line">    boosting_type= <span class="string">'gbdt'</span>,  </div><div class="line">    objective= <span class="string">'binary'</span>,  </div><div class="line">    metric= <span class="string">'auc'</span>, </div><div class="line">    num_leaves= <span class="number">20</span>,  </div><div class="line">    max_depth= <span class="number">5</span>,  </div><div class="line">    min_data_in_leaf= <span class="number">20</span>,  </div><div class="line">    learning_rate= <span class="number">0.02</span>,  </div><div class="line">    feature_fraction= <span class="number">0.9</span>,  </div><div class="line">    bagging_fraction=<span class="number">0.9</span>,  </div><div class="line">    bagging_freq= <span class="number">5</span>,  </div><div class="line">    lambda_l1=<span class="number">1</span>,</div><div class="line">    lambda_l2=<span class="number">0.001</span>,</div><div class="line">    min_gain_to_split= <span class="number">0.2</span>,  </div><div class="line">    verbose=<span class="number">5</span>,  </div><div class="line">    is_unbalance=<span class="keyword">True</span>, </div><div class="line">    random_state=<span class="number">1024</span>)</div><div class="line"></div><div class="line"><span class="keyword">import</span> xgboost <span class="keyword">as</span> xgb</div><div class="line"></div><div class="line">xgboost_gbtree = xgb.XGBClassifier(</div><div class="line">    booster=<span class="string">'gbtree'</span>,</div><div class="line">    objective=<span class="string">'binary:logistic'</span>,</div><div class="line">    n_estimators = <span class="number">500</span>,</div><div class="line">    learning_rate = <span class="number">0.1</span>,</div><div class="line">    subsample= <span class="number">0.9</span>,</div><div class="line">    colsample_bytree= <span class="number">0.9</span>,</div><div class="line">    min_child_weight=<span class="number">2</span>,</div><div class="line">    max_depth= <span class="number">7</span></div><div class="line">)</div><div class="line"></div><div class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> GridSearchCV</div><div class="line"><span class="keyword">from</span> catboost <span class="keyword">import</span> CatBoostClassifier</div><div class="line"></div><div class="line">param_cb = &#123;</div><div class="line">        <span class="string">'learning_rate'</span>: <span class="number">0.15</span>,</div><div class="line">        <span class="string">'bagging_temperature'</span>: <span class="number">0.1</span>, </div><div class="line">        <span class="string">'l2_leaf_reg'</span>: <span class="number">4</span>,</div><div class="line">        <span class="string">'depth'</span>: <span class="number">7</span>, </div><div class="line">        <span class="string">'iterations'</span> : <span class="number">300</span>,</div><div class="line">        <span class="string">'task_type'</span>:<span class="string">'CPU'</span>,</div><div class="line">        <span class="string">'loss_function'</span> : <span class="string">"CrossEntropy"</span>,</div><div class="line">        <span class="string">'eval_metric'</span> : <span class="string">"AUC"</span>,</div><div class="line">        <span class="comment">#'bootstrap_type' : 'Bayesian',</span></div><div class="line">        <span class="comment">#'random_seed':42,</span></div><div class="line">        <span class="comment">#'early_stopping_rounds' : 100,</span></div><div class="line">&#125;</div><div class="line">clf_ctb = CatBoostClassifier(**param_cb)</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">clf_ctb.fit(X_dtrain, Y_dtrain)</div><div class="line"></div><div class="line"></div><div class="line">models = [  <span class="comment">######## First level ########</span></div><div class="line">            [xgboost_gbtree, clf_ctb, lightgbm],</div><div class="line">            <span class="comment">######## Second level ########</span></div><div class="line">            [lightgbm],</div><div class="line">]</div><div class="line"></div><div class="line"><span class="keyword">from</span> pystacknet.pystacknet <span class="keyword">import</span> StackNetClassifier</div><div class="line"></div><div class="line">model = StackNetClassifier(</div><div class="line">    models,</div><div class="line">    metric=<span class="string">"auc"</span>,</div><div class="line">    folds=<span class="number">3</span>,</div><div class="line">    restacking=<span class="keyword">True</span>,</div><div class="line">    use_retraining=<span class="keyword">True</span>,</div><div class="line">    use_proba=<span class="keyword">True</span>,</div><div class="line">    random_state=<span class="number">42</span>,</div><div class="line">    verbose=<span class="number">1</span>,</div><div class="line">)</div><div class="line"></div><div class="line">model.fit(X_dtrain, Y_dtrain)</div></pre></td></tr></table></figure>
+
+        
+      </div>
+      <footer>
+        
+          
+          
+  
+  <div class="tags">
+    <a href="/tags/python/">python</a>, <a href="/tags/pandas/">pandas</a>
+  </div>
+
+          <div class="share">
+  
+</div>
+          
+<nav class="article-nav clearfix">
+ 
+
+<div class="article-next">
+<a href="/blog/2018-reading-list/"  title="2018闲书阅读书目">
+ <span>2018闲书阅读书目
+</span>
+<i class="fa fa-long-arrow-right"></i>
+</a>
+</div>
+
+</nav>
+
+        
+        <div class="clearfix"></div>
+      </footer>
+    </div>
+</article>
+
+
+<section id="comment">
+<div id="disqus_thread"></div>
+<script>
+
+/*disqus代码*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://www-luckyonecn-com.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright"><div class="padding">
+	
+	  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:www.luckyonecn.com">
+  </form>
+</div>
+	
+	  
+<div class="widget recent-post">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/blog/data-mining-handbook/">数据挖掘比赛Handbook</a>
+      </li>
+    
+      <li>
+        <a href="/blog/2018-reading-list/">2018闲书阅读书目</a>
+      </li>
+    
+      <li>
+        <a href="/blog/Robo-Advisor/">智能投顾</a>
+      </li>
+    
+      <li>
+        <a href="/blog/2017-reading-list/">2017闲书阅读书目</a>
+      </li>
+    
+      <li>
+        <a href="/blog/effectively-final-JDK-8/">JDK8中的effectively final</a>
+      </li>
+    
+  </ul>
+</div>
+
+	
+	  
+	
+	  
+<div class="widget tag">
+  <h3 class="title">标签</h3>
+  
+    <a href="/tags/CXF/">CXF<small>2</small></a>
+  
+    <a href="/tags/Consistent-Hashing/">Consistent Hashing<small>1</small></a>
+  
+    <a href="/tags/DNS/">DNS<small>1</small></a>
+  
+    <a href="/tags/DOMAIN/">DOMAIN<small>1</small></a>
+  
+    <a href="/tags/GZIP/">GZIP<small>1</small></a>
+  
+    <a href="/tags/Git/">Git<small>1</small></a>
+  
+    <a href="/tags/H2/">H2<small>1</small></a>
+  
+    <a href="/tags/JAVA/">JAVA<small>1</small></a>
+  
+    <a href="/tags/JNDI/">JNDI<small>1</small></a>
+  
+    <a href="/tags/Junit4/">Junit4<small>1</small></a>
+  
+    <a href="/tags/Map/">Map<small>1</small></a>
+  
+    <a href="/tags/SPI-Service-Provider-Interface/">SPI(Service Provider Interface)<small>1</small></a>
+  
+    <a href="/tags/Spring/">Spring<small>2</small></a>
+  
+    <a href="/tags/Web-API/">Web API<small>1</small></a>
+  
+    <a href="/tags/Web-Service/">Web Service<small>2</small></a>
+  
+    <a href="/tags/WebSphere/">WebSphere<small>1</small></a>
+  
+    <a href="/tags/WhirlyGlobe/">WhirlyGlobe<small>1</small></a>
+  
+    <a href="/tags/algorithm/">algorithm<small>2</small></a>
+  
+    <a href="/tags/hexo/">hexo<small>2</small></a>
+  
+    <a href="/tags/iOS/">iOS<small>1</small></a>
+  
+    <a href="/tags/java/">java<small>2</small></a>
+  
+    <a href="/tags/nodejs/">nodejs<small>1</small></a>
+  
+    <a href="/tags/pandas/">pandas<small>1</small></a>
+  
+    <a href="/tags/python/">python<small>1</small></a>
+  
+    <a href="/tags/sql/">sql<small>1</small></a>
+  
+    <a href="/tags/web/">web<small>1</small></a>
+  
+    <a href="/tags/windows8开发/">windows8开发<small>2</small></a>
+  
+    <a href="/tags/理财/">理财<small>1</small></a>
+  
+</div>
+
+	
+</div></aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="padding">
+	<div class="alignleft">
+	  
+	  &copy; 2019 Liu Tianhe
+	  
+	  Powerd by <a href="http://hexo.io/" target="_blank">hexo</a>
+	  and Theme by <a href="https://github.com/halfer53/metro-light" target="_blank">metro-light</a>
+	</div>
+
+	<div class="alignright">
+		
+		
+			<a href="https://github.com/https://github.com/fantasywow" target="_blank" title="Liu Tianhe Github"><i class="fa fa-github-square"></i></a>	
+		
+		
+		
+		
+		
+		
+			<a href="/atom.xml" target="_blank" title="Liu Tianhe RSS"><i class="fa fa-rss-square"></i></a>
+		
+	</div>
+
+	<div class="clearfix"></div>
+</div>
+
+<div class="scroll-top"><i class="fa fa-arrow-circle-up"></i></div></footer>
+  
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.0.4/jquery.imagesloaded.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+<script type="text/javascript">
+$(window).scroll(function() {
+
+    if($(this).scrollTop() > 400) {
+        $('.scroll-top').fadeIn(200);
+    } else {
+        $('.scroll-top').fadeOut(200);
+    }
+});
+
+$('.scroll-top').bind('click', function(e) {
+    e.preventDefault();
+    $('body,html').animate({scrollTop:0},200);
+});
+</script>
+
+
+</body>
+</html>

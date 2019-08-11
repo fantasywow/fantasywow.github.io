@@ -46,7 +46,7 @@
     },
     localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
     path: 'search.xml',
-    motion: {"enable":false,"async":false,"transition":null},
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
       copy_button: '复制',
       copy_success: '复制成功',
@@ -329,7 +329,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>看了一个关于网站压缩的google视频讲座，总结下。<br><a id="more"></a><br>讲座地址：<a href="https://developers.google.com/live/shows/5704036963581952" target="_blank" rel="noopener">GZIP is not enough!</a> (YouTube..需翻墙)<br>PPT：<a href="https://docs.google.com/presentation/d/1TtEKxKLi2pG3OoS8fgCpum_9nPZz_KxgO3UkBdh4bh8/edit#slide=id.p18" target="_blank" rel="noopener">PPT</a>  </p>
+        <p>看了一个关于网站压缩的google视频讲座，总结下。</p>
+<a id="more"></a>
+<p>讲座地址：<a href="https://developers.google.com/live/shows/5704036963581952" target="_blank" rel="noopener">GZIP is not enough!</a> (YouTube..需翻墙)<br>PPT：<a href="https://docs.google.com/presentation/d/1TtEKxKLi2pG3OoS8fgCpum_9nPZz_KxgO3UkBdh4bh8/edit#slide=id.p18" target="_blank" rel="noopener">PPT</a>  </p>
 <hr>
 <ul>
 <li><p>虽然一个网站占主要大小的是图片，但HTML,JS,CSS的大小也是在不断增加的，所以文本相关的压缩是十分重要的。</p>
@@ -361,13 +363,11 @@
 {
  “name”: “Colt”,
  “pos”: “USA”,
-}
-</code></pre><p>   转换成：</p>
+}</code></pre><p>   转换成：</p>
 <pre><code>{
  “name”: [“alex”, “colt”],
  “pos”: [“AUS”, “USA”],
-}
-</code></pre><p>不光本身体积小了，也有利于压缩。</p>
+}</code></pre><p>不光本身体积小了，也有利于压缩。</p>
 </blockquote>
 </li>
 <li><p>通过Dense Codes算法预处理来优化压缩（Compression boosting）。测试结果Dense Codes+7-Zip效果最好</p>

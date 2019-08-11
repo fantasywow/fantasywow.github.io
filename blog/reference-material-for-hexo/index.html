@@ -46,7 +46,7 @@
     },
     localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
     path: 'search.xml',
-    motion: {"enable":false,"async":false,"transition":null},
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
       copy_button: '复制',
       copy_success: '复制成功',
@@ -334,7 +334,7 @@
 <p><a href="http://zipperary.com/2013/05/28/hexo-guide-1/" target="_blank" rel="noopener">hexo系列教程：（一）hexo介绍</a><br><strong>整个系列写的非常详细，有时间应该从头到尾看一遍</strong></p>
 <p><strong>搭建过程中遇到个小问题，最开始通过https使用用户名和密码连接github，后来换成ssh后仍然需要用户名和密码，最后参考<a href="http://www.studio2013.com/2013/07/21/hexo-github-deploy/" target="_blank" rel="noopener">这篇文章</a>解决了问题：</strong></p>
 <blockquote>
-<p>1、因为我们这里讲的是SSH连接方式，这也是我认为最可靠，最方便的一种连接方式，但有可能会出现每次push时，都需要输入用户名和密码，而我们用ssh -T git@github.com时，是没有问题的，这种情况多发生之前创建过HTTPS登陆方式，但信息没有清除干净，解决方法是，在git配置目录或hexo.deploy.git下，打开config文件，将HTTPS开头的字符串，改为it@github.com:账户名/账户名.github.com.git方式。</p>
+<p>1、因为我们这里讲的是SSH连接方式，这也是我认为最可靠，最方便的一种连接方式，但有可能会出现每次push时，都需要输入用户名和密码，而我们用ssh -T <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>时，是没有问题的，这种情况多发生之前创建过HTTPS登陆方式，但信息没有清除干净，解决方法是，在git配置目录或hexo.deploy.git下，打开config文件，将HTTPS开头的字符串，改为<a href="mailto:it@github.com" target="_blank" rel="noopener">it@github.com</a>:账户名/账户名.github.com.git方式。</p>
 </blockquote>
 
     </div>

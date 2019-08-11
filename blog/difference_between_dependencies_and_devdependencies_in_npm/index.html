@@ -46,7 +46,7 @@
     },
     localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
     path: 'search.xml',
-    motion: {"enable":false,"async":false,"transition":null},
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
       copy_button: '复制',
       copy_success: '复制成功',
@@ -329,16 +329,14 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>一个node package有两种依赖，一种是dependencies一种是devDependencies，其中前者依赖的项该是正常运行该包时所需要的依赖项，而后者则是开发的时候需要的依赖项，像一些进行单元测试之类的包。<br><a id="more"></a><br>如果你将包下载下来在包的根目录里运行  </p>
-<pre><code>npm install
-</code></pre><p>默认会安装两种依赖，如果你只是单纯的使用这个包而不需要进行一些改动测试之类的，可以使用</p>
-<pre><code>npm install --production
-</code></pre><p>只安装dependencies而不安装devDependencies。</p>
+        <p>一个node package有两种依赖，一种是dependencies一种是devDependencies，其中前者依赖的项该是正常运行该包时所需要的依赖项，而后者则是开发的时候需要的依赖项，像一些进行单元测试之类的包。  </p>
+<a id="more"></a>
+<p>如果你将包下载下来在包的根目录里运行  </p>
+<pre><code>npm install</code></pre><p>默认会安装两种依赖，如果你只是单纯的使用这个包而不需要进行一些改动测试之类的，可以使用</p>
+<pre><code>npm install --production</code></pre><p>只安装dependencies而不安装devDependencies。</p>
 <p>如果你是通过以下命令进行安装</p>
-<pre><code>npm install packagename
-</code></pre><p>那么只会安装dependencies，如果想要安装devDependencies，需要输入</p>
-<pre><code>npm install packagename --dev  
-</code></pre><hr>
+<pre><code>npm install packagename</code></pre><p>那么只会安装dependencies，如果想要安装devDependencies，需要输入</p>
+<pre><code>npm install packagename --dev  </code></pre><hr>
 <p>参考文献：<br>npm官方文档：<br><a href="https://www.npmjs.org/doc/json.html" target="_blank" rel="noopener">package.json</a><br><a href="https://www.npmjs.org/doc/cli/npm-install.html" target="_blank" rel="noopener">npm-install</a></p>
 
     </div>

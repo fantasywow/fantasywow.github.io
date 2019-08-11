@@ -46,7 +46,7 @@
     },
     localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
     path: 'search.xml',
-    motion: {"enable":false,"async":false,"transition":null},
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
       copy_button: '复制',
       copy_success: '复制成功',
@@ -332,11 +332,14 @@
         <p>H2作为一款嵌入式数据库非常适合用来写一些Demo小程序之类的。</p>
 <p>首先配置pom.xml添加H2的依赖。</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.h2database<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>h2<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>1.4.193<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
 <p>接下来在你的RootConfig里配置数据源</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> DataSource <span class="title">dataSource</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    EmbeddedDatabaseBuilder builder = <span class="keyword">new</span> EmbeddedDatabaseBuilder();</span><br><span class="line">    EmbeddedDatabase db = builder</span><br><span class="line">            .setType(EmbeddedDatabaseType.H2)</span><br><span class="line">            .addScript(<span class="string">"db/create-db.sql"</span>)</span><br><span class="line">            .addScript(<span class="string">"db/data-db.sql"</span>)</span><br><span class="line">            .build();</span><br><span class="line">    <span class="keyword">return</span> db;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>addScript的两个脚本是用来建表和添加测试数据的，期间发现org.h2.command.Parser解析create table语句必须写在一行里，不支持中间有换行符，按理说应该能如何配置下来支持。</p>
 <p>想要开启H2的console还需要添加：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span>(initMethod=<span class="string">"start"</span>,destroyMethod=<span class="string">"stop"</span>)</span><br><span class="line"><span class="keyword">public</span> org.h2.tools.<span class="function">Server <span class="title">h2WebConsonleServer</span> <span class="params">()</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> org.h2.tools.Server.createWebServer(<span class="string">"-web"</span>,<span class="string">"-webAllowOthers"</span>,<span class="string">"-webDaemon"</span>,<span class="string">"-webPort"</span>, <span class="string">"8888"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>之后就可以通过localhost:8888访问H2的控制台了</p>
 <p>够简单。</p>
 

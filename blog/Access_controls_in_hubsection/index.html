@@ -46,7 +46,7 @@
     },
     localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
     path: 'search.xml',
-    motion: {"enable":false,"async":false,"transition":null},
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
       copy_button: '复制',
       copy_success: '复制成功',
@@ -342,19 +342,15 @@
             &lt;/ListView.ItemTemplate&gt;
         &lt;/ListView&gt;
     &lt;/DataTemplate&gt;
-&lt;/HubSection&gt;
-</code></pre><p>这样一个ListView如果你像平常一样在代码里</p>
-<pre><code>listView.ItemsSource = someObservableCollection;
-</code></pre><p>会报错<strong>The name ‘listView’ does not exist in the current context</strong></p>
+&lt;/HubSection&gt;</code></pre><p>这样一个ListView如果你像平常一样在代码里</p>
+<pre><code>listView.ItemsSource = someObservableCollection;</code></pre><p>会报错<strong>The name ‘listView’ does not exist in the current context</strong></p>
 <p>一个非常简单的解决办法是在ListView里添加Loaded事件函数。</p>
-<pre><code>&lt;ListView x:Name=&quot;listview&quot; Loaded=&quot;ListView_Loaded&quot;&gt;
-</code></pre><p>然后添加函数</p>
+<pre><code>&lt;ListView x:Name=&quot;listview&quot; Loaded=&quot;ListView_Loaded&quot;&gt;</code></pre><p>然后添加函数</p>
 <pre><code>private void NotificationList_Loaded(object sender, RoutedEventArgs e)
 {
     var listView = (ListView)sender;
      listView.ItemsSource = someObservableCollection;
-}
-</code></pre><p>总感觉应该有更好的方法。</p>
+}</code></pre><p>总感觉应该有更好的方法。</p>
 
     </div>
 

@@ -46,7 +46,7 @@
     },
     localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
     path: 'search.xml',
-    motion: {"enable":false,"async":false,"transition":null},
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
       copy_button: '复制',
       copy_success: '复制成功',
@@ -332,8 +332,7 @@
         <p>首选你需要买一个域名，经过对比，个人感觉对于个人用户godaddy明显优于万网，最重要的是价格便宜！各种优惠，我通过google搜索godaddy的第一个广告链接进去发现一个.com的域名也才五十多，比用网上找的优惠卷都便宜，没想到google的广告还有这种福利。。。购买完域名后发现都说godaddy的DNS容易悲剧，于是要换成DNSPOD的。</p>
 <p>首先参考<a href="https://support.dnspod.cn/Kb/showarticle/tsid/42/" target="_blank" rel="noopener"><br>Godaddy注册商域名修改DNS地址</a>，进入godaddy的域名管理页面，将你的域名的nameserver改成：</p>
 <pre><code>f1g1ns1.dnspod.net
-f1g1ns2.dnspod.net
-</code></pre><p>注意当你的nameserver改成DNSPOD后godaddy里面的DNS Zone file 里面的设置就没有意义了，你需要到DNSPOD上注册个账号在上面配置CNAME。</p>
+f1g1ns2.dnspod.net</code></pre><p>注意当你的nameserver改成DNSPOD后godaddy里面的DNS Zone file 里面的设置就没有意义了，你需要到DNSPOD上注册个账号在上面配置CNAME。</p>
 <p>最后还需要在github上添加CNAME记录，你可以直接在hexo的source目录下添加个CNAME文件，文件内容是你的域名，也可以手动在github上你的博客repository里添加CNAME文件。</p>
 
     </div>

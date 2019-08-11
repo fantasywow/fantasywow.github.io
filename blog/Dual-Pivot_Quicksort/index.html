@@ -46,7 +46,7 @@
     },
     localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
     path: 'search.xml',
-    motion: {"enable":false,"async":false,"transition":null},
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
       copy_button: '复制',
       copy_success: '复制成功',
@@ -63,7 +63,7 @@
 <meta property="og:site_name" content="LucKy_one">
 <meta property="og:description" content="课本上常见的快速排序都是选择一个枢纽元（Pivot），基于这个枢纽元从前后双向扫描分成大于枢纽元和小于枢纽元的。而从JDK 7开始，java.util.Arrays.sort()使用双基准快速排序（Dual-Pivot Quicksort）作为实现。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-04-05T06:44:40.190Z">
+<meta property="og:updated_time" content="2018-04-05T06:44:40.191Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="双基准快速排序 Dual-Pivot Quicksort">
 <meta name="twitter:description" content="课本上常见的快速排序都是选择一个枢纽元（Pivot），基于这个枢纽元从前后双向扫描分成大于枢纽元和小于枢纽元的。而从JDK 7开始，java.util.Arrays.sort()使用双基准快速排序（Dual-Pivot Quicksort）作为实现。">
@@ -330,7 +330,9 @@
 
       
         <p>课本上常见的快速排序都是选择一个枢纽元（Pivot），基于这个枢纽元从前后双向扫描分成大于枢纽元和小于枢纽元的。而从JDK 7开始，java.util.Arrays.sort()使用双基准快速排序（Dual-Pivot Quicksort）作为实现。</p>
-<p>—update JDK7使用双基准快速排序来排序基本元素，针对对象用TimSort<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public static void sort(int[] a) &#123;</span><br><span class="line">    DualPivotQuicksort.sort(a, 0, a.length - 1, null, 0, 0); </span><br><span class="line">&#125;</span><br><span class="line">public static void sort(Object[] a) &#123;</span><br><span class="line">    if (LegacyMergeSort.userRequested) //java -Djava.util.Arrays.useLegacyMergeSort=true 这个是运行时配置的</span><br><span class="line">        legacyMergeSort(a);</span><br><span class="line">    else</span><br><span class="line">        ComparableTimSort.sort(a, 0, a.length, null, 0, 0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>—update JDK7使用双基准快速排序来排序基本元素，针对对象用TimSort </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public static void sort(int[] a) &#123;</span><br><span class="line">    DualPivotQuicksort.sort(a, 0, a.length - 1, null, 0, 0); </span><br><span class="line">&#125;</span><br><span class="line">public static void sort(Object[] a) &#123;</span><br><span class="line">    if (LegacyMergeSort.userRequested) //java -Djava.util.Arrays.useLegacyMergeSort=true 这个是运行时配置的</span><br><span class="line">        legacyMergeSort(a);</span><br><span class="line">    else</span><br><span class="line">        ComparableTimSort.sort(a, 0, a.length, null, 0, 0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h3 id="传统快速排序："><a href="#传统快速排序：" class="headerlink" title="传统快速排序："></a>传统快速排序：</h3><ol>
 <li>选择枢纽元pivot,有很多种选法，但都只有一个。</li>
 <li>基于枢纽元分成大于和小于的两部分，并且枢纽元放到最终的位置。</li>

@@ -46,7 +46,7 @@
     },
     localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
     path: 'search.xml',
-    motion: {"enable":false,"async":false,"transition":null},
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
       copy_button: '复制',
       copy_success: '复制成功',
@@ -348,8 +348,7 @@ git config --global core.safecrlf true
 #允许提交包含混合换行符的文件
 git config --global core.safecrlf false   
 #提交包含混合换行符的文件时给出警告
-git config --global core.safecrlf warn
-</code></pre><p>P.S.S.  git config 有三个作用域system，globe，local。优先级是local&gt;globe&gt;system。剩下的以后在研究 </p>
+git config --global core.safecrlf warn</code></pre><p>P.S.S.  git config 有三个作用域system，globe，local。优先级是local&gt;globe&gt;system。剩下的以后在研究 </p>
 <hr>
 <p>参考文章：<br><a href="http://git-scm.com/book/zh/%E8%87%AA%E5%AE%9A%E4%B9%89-Git-%E9%85%8D%E7%BD%AE-Git" target="_blank" rel="noopener">7.1 自定义 Git - 配置 Git</a><br><a href="https://help.github.com/articles/dealing-with-line-endings" target="_blank" rel="noopener">Dealing with line endings</a></p>
 

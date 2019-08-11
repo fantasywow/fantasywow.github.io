@@ -46,7 +46,7 @@
     },
     localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
     path: 'search.xml',
-    motion: {"enable":false,"async":false,"transition":null},
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
       copy_button: '复制',
       copy_success: '复制成功',
@@ -327,12 +327,12 @@
 <p>简单来说，如果只读一个外部变量，不再需要指定成final了。<br>而在之前，常见的匿名内部类访问外部局部变量必须指定成final。</p>
 <p>下面这段代码1.8就可以执行，1.7就会编译报错。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> aa = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> bb = <span class="number">20</span>;</span><br><span class="line">    Thread t1 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            System.out.println(aa+bb); </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<pre><code>1.7报错内容：Error:(22, 36) java: 从内部类中访问本地变量aa; 需要被声明为最终类型
-</code></pre><p>当你要修改的外部变量时，在1.8下也会直接报错：</p>
+
+<pre><code>1.7报错内容：Error:(22, 36) java: 从内部类中访问本地变量aa; 需要被声明为最终类型</code></pre><p>当你要修改的外部变量时，在1.8下也会直接报错：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> aa = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> bb = <span class="number">20</span>;</span><br><span class="line">    Thread t1 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            System.out.println(aa+bb);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    Thread t2 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            aa = <span class="number">20</span>; <span class="comment">//Error</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <pre><code>1.8报错内容Error:(34, 17) java: 从内部类引用的本地变量必须是最终变量或实际上的最终变量
-(needs to be final or effectively final)
-</code></pre>
+(needs to be final or effectively final)</code></pre>
     </div>
 
     

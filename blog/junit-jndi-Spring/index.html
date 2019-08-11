@@ -46,7 +46,7 @@
     },
     localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
     path: 'search.xml',
-    motion: {"enable":false,"async":false,"transition":null},
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
       copy_button: '复制',
       copy_success: '复制成功',
@@ -322,12 +322,12 @@
 
       
         <p>系统使用JNDI来访问在容器上配置的资源信息（例如数据库信息）,如果用xml来配置的话一般这么写</p>
- <jee:jndi-lookup id="dataSource" jndi-name="jdbc/database" expected-type="javax.sql.DataSource">
-
+<p> &lt;jee:jndi-lookup id=”dataSource” jndi-name=”jdbc/database” expected-type=”javax.sql.DataSource” /&gt;</p>
 <p>但是使用Junit来做测试的时候并不会访问容器，也就无法获取资源信息。这个时候你可以另外写一份applicationContextTest.xml来供测试用，或者可以在Junit里配置JNDI资源。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RunWith</span>(SpringJUnit4ClassRunner.class)</span><br><span class="line"><span class="meta">@ContextConfiguration</span>(locations = <span class="string">"classpath:applicationContext.xml"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">XXXXXXTest</span> </span>&#123; </span><br><span class="line">    <span class="meta">@BeforeClass</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">setUpJndi</span><span class="params">()</span> <span class="keyword">throws</span> IllegalStateException, NamingException</span>&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//配置DataSource</span></span><br><span class="line">        SybDataSource ds = <span class="keyword">new</span> SybDataSource();</span><br><span class="line">        ds.setServerName(<span class="string">"127.0.0.1"</span>);</span><br><span class="line">        ds.setPortNumber(<span class="number">5000</span>);</span><br><span class="line">        ds.setDatabaseName(<span class="string">"databaseName"</span>);</span><br><span class="line">        ds.setNetworkProtocol(<span class="string">"Tds"</span>);</span><br><span class="line">        ds.setUser(<span class="string">"user"</span>);</span><br><span class="line">        ds.setPassword(<span class="string">"password"</span>);</span><br><span class="line">        ds.setCHARSET(<span class="string">"cp936"</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//配置ActiveMQ</span></span><br><span class="line">        ActiveMQTopic topic = <span class="keyword">new</span> ActiveMQTopic(<span class="string">"testTopic"</span>);</span><br><span class="line">        ActiveMQConnectionFactory connectionFactory = <span class="keyword">new</span> ActiveMQConnectionFactory(<span class="string">"tcp://localhost:61616"</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//org.springframework.mock.jndi.SimpleNamingContextBuilder </span></span><br><span class="line">        SimpleNamingContextBuilder builder = <span class="keyword">new</span> SimpleNamingContextBuilder();</span><br><span class="line">        builder.bind(<span class="string">"jdbc/database"</span>, ds);</span><br><span class="line">        builder.bind(<span class="string">"jms/topic"</span>, topic);</span><br><span class="line">        builder.bind(<span class="string">"jms/topicConnFactory"</span>, connectionFactory);</span><br><span class="line">        builder.activate();</span><br><span class="line">    &#125;     </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>实际使用的时候，直接使用生产的applicationContext很容易因为过于庞大而初始化过程缓慢，如果项目非常大还是应该单独写几个测试的applicationContext分模块来测试。</p>
-</jee:jndi-lookup>
+
     </div>
 
     

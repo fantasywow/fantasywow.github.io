@@ -46,7 +46,7 @@
     },
     localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
     path: 'search.xml',
-    motion: {"enable":false,"async":false,"transition":null},
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
       copy_button: '复制',
       copy_success: '复制成功',
@@ -344,8 +344,7 @@ try
 catch (System.Exception ex)
 {
     Services.Log.Error(ex.Message, null, &quot;Push.SendAsync Error&quot;);
-}
-</code></pre><p>当你点击Toast时会触发OnLaunched函数，参数内容可以在toast里面指定。这样就可以在OnLaunched根据参数做出指定的操作。</p>
+}</code></pre><p>当你点击Toast时会触发OnLaunched函数，参数内容可以在toast里面指定。这样就可以在OnLaunched根据参数做出指定的操作。</p>
 <pre><code>protected override void OnLaunched(LaunchActivatedEventArgs e)
 {
     string launchString = e.Arguments;
@@ -354,14 +353,12 @@ catch (System.Exception ex)
         TestToastLaunchBrowers();
     }
         …………
-}
-</code></pre><p>这里我们通过点击Toast来启动一个外部浏览器并打开一个URL：使用Windows.System.Launcher.LaunchUriAsync(Uri)该方法可以在windows8以及wp8中使用</p>
+}</code></pre><p>这里我们通过点击Toast来启动一个外部浏览器并打开一个URL：使用Windows.System.Launcher.LaunchUriAsync(Uri)该方法可以在windows8以及wp8中使用</p>
 <pre><code>async void TestToastLaunchBrowers()
 {
     // Launch the URI
     var success = await Windows.System.Launcher.LaunchUriAsync(new Uri(&quot;http://www.bing.com&quot;));
-}
-</code></pre><p>参考文献：<br><a href="http://msdn.microsoft.com/en-us/library/windows/apps/xaml/Hh868212(v=win.10" target="_blank" rel="noopener">How to handle activation from a toast notification (XAML)</a>.aspx)</p>
+}</code></pre><p>参考文献：<br><a href="http://msdn.microsoft.com/en-us/library/windows/apps/xaml/Hh868212(v=win.10).aspx" target="_blank" rel="noopener">How to handle activation from a toast notification (XAML)</a></p>
 
     </div>
 

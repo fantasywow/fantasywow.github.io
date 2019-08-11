@@ -46,7 +46,7 @@
     },
     localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
     path: 'search.xml',
-    motion: {"enable":false,"async":false,"transition":null},
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
       copy_button: '复制',
       copy_success: '复制成功',
@@ -340,8 +340,7 @@
     jaxb-api-*,
     jaxb-impl-*,
     xercesImpl-*,
-    xml-apis-*
-</code></pre><p>发现项目中包含了activation.1.1.1.jar(其实并不知道这个jar包是干什么的。。),删了之后发现一切正常了！</p>
+    xml-apis-*</code></pre><p>发现项目中包含了activation.1.1.1.jar(其实并不知道这个jar包是干什么的。。),删了之后发现一切正常了！</p>
 
     </div>
 

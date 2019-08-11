@@ -46,7 +46,7 @@
     },
     localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
     path: 'search.xml',
-    motion: {"enable":false,"async":false,"transition":null},
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
       copy_button: '复制',
       copy_success: '复制成功',
@@ -368,22 +368,18 @@ Template render error: (unknown path) [Line 7, Column 23]
     at Async._drainQueue (D:\OneDrive\blog\node_modules\hexo\node_modules\bluebird\js\release\async.js:143:12)
     at Async._drainQueues (D:\OneDrive\blog\node_modules\hexo\node_modules\bluebird\js\release\async.js:148:10)
     at Immediate.Async.drainQueues [as _onImmediate] (D:\OneDrive\blog\node_modules\hexo\node_modules\bluebird\js\release\async.js:17:14)
-    at processImmediate [as _immediateCallback] (timers.js:383:17)
-</code></pre><p>看了眼似乎是hexo-generator-feed插件的问题<br>_config.yml：</p>
+    at processImmediate [as _immediateCallback] (timers.js:383:17)</code></pre><p>看了眼似乎是hexo-generator-feed插件的问题<br>_config.yml：</p>
 <pre><code>plugins:
-##- hexo-generator-feed
-</code></pre><p>注释掉这个插件后能够顺利生成了<br>看这个插件的Github上的issue目测是还没支持3.2.2（后面发现不是这个问题）<br><a href="https://github.com/hexojs/hexo-generator-feed/issues/43" target="_blank" rel="noopener">https://github.com/hexojs/hexo-generator-feed/issues/43</a><br>P.S.新版本的生成过程中输出信息少了很多，一度以为有问题，new了个新文章发现也是这样。</p>
+##- hexo-generator-feed</code></pre><p>注释掉这个插件后能够顺利生成了<br>看这个插件的Github上的issue目测是还没支持3.2.2（后面发现不是这个问题）<br><a href="https://github.com/hexojs/hexo-generator-feed/issues/43" target="_blank" rel="noopener">https://github.com/hexojs/hexo-generator-feed/issues/43</a><br>P.S.新版本的生成过程中输出信息少了很多，一度以为有问题，new了个新文章发现也是这样。</p>
 <h2 id="本地测试"><a href="#本地测试" class="headerlink" title="本地测试"></a>本地测试</h2><p>之后准备运行server来本地先看看效果。结果hexo server说没有这个命令。。顿时迷茫了。。尝试重装了hexo和hexo-server依然不行，各种研究之后看到一个说是因为配置文件里的plugins项，看了眼hexo 3.0的改动日志。</p>
 <pre><code>Plugin Loading Mechanism
-In Hexo 3, only plugins listed in package.json will be loaded, and plugins/scripts will be executed in sandbox so hexo namespace will be no longer exposed to global.
-</code></pre><p>这样看来_config.yml中的plugins项就失去了意义直接删除之后就可以顺利运行，连上面注释掉的feed插件也正常了。比照了下网站上的内容，发现没什么问题，进入下一步部署相关内容。</p>
+In Hexo 3, only plugins listed in package.json will be loaded, and plugins/scripts will be executed in sandbox so hexo namespace will be no longer exposed to global.</code></pre><p>这样看来_config.yml中的plugins项就失去了意义直接删除之后就可以顺利运行，连上面注释掉的feed插件也正常了。比照了下网站上的内容，发现没什么问题，进入下一步部署相关内容。</p>
 <h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><p>先在Git Bash里生成ssh密钥<br><code>ssh-keygen -t rsa -b 4096 -C &quot;your_email@example.com&quot;</code><br>将公钥配置到Github和Coding.net中（我是同时部署到这两个网站，在dnspod里配置DNS信息，联通和电信访问Coding.net其他就访问Github）<br>再<br><code>ssh -T git@github.com</code><br><code>ssh -T git@git.coding.net</code><br>测试下连通性，第一次的话一般会提示:</p>
 <pre><code>The authenticity of host &apos;github.com (192.30.253.113)&apos; can&apos;t be established.
 RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
 Are you sure you want to continue connecting (yes/no)? yes
 Warning: Permanently added &apos;github.com,192.30.253.113&apos; (RSA) to the list of known hosts.
-Hi XXXXXXX! You&apos;ve successfully authenticated, but GitHub does not provide shell access.
-</code></pre><p>将网站的公钥加入到known_hosts中。</p>
+Hi XXXXXXX! You&apos;ve successfully authenticated, but GitHub does not provide shell access.</code></pre><p>将网站的公钥加入到known_hosts中。</p>
 
     </div>
 

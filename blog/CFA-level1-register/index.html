@@ -55,20 +55,25 @@
   };
 </script>
 
-  <meta name="description" content="记录下重装系统后将hexo升级到3.2.2版本的过程以及遇到的问题">
-<meta name="keywords" content="hexo">
+  <meta name="description" content="CFA Level I exam 报名注册">
+<meta name="keywords" content="CFA">
 <meta property="og:type" content="article">
-<meta property="og:title" content="升级hexo至3.2.2">
-<meta property="og:url" content="http://www.liutianhe.com/blog/update-hexo-to-3-2-2/index.html">
+<meta property="og:title" content="CFA Level I exam 报名注册">
+<meta property="og:url" content="http://www.liutianhe.com/blog/CFA-level1-register/index.html">
 <meta property="og:site_name" content="LucKy_one">
-<meta property="og:description" content="记录下重装系统后将hexo升级到3.2.2版本的过程以及遇到的问题">
+<meta property="og:description" content="CFA Level I exam 报名注册">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2016-10-03T17:26:19.345Z">
+<meta property="og:image" content="http://www.liutianhe.com/images/cfa-register.png">
+<meta property="og:image" content="http://www.liutianhe.com/images/how-to-earn-the-cfa-charter.png">
+<meta property="og:image" content="http://www.liutianhe.com/images/cfa-fee.png">
+<meta property="og:image" content="http://www.liutianhe.com/images/cfa-level1-fee.png">
+<meta property="og:updated_time" content="2019-10-04T07:57:47.562Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="升级hexo至3.2.2">
-<meta name="twitter:description" content="记录下重装系统后将hexo升级到3.2.2版本的过程以及遇到的问题">
+<meta name="twitter:title" content="CFA Level I exam 报名注册">
+<meta name="twitter:description" content="CFA Level I exam 报名注册">
+<meta name="twitter:image" content="http://www.liutianhe.com/images/cfa-register.png">
   <link rel="alternate" href="/atom.xml" title="LucKy_one" type="application/atom+xml">
-  <link rel="canonical" href="http://www.liutianhe.com/blog/update-hexo-to-3-2-2/">
+  <link rel="canonical" href="http://www.liutianhe.com/blog/CFA-level1-register/">
 
 
 <script id="page-configurations">
@@ -82,7 +87,7 @@
   };
 </script>
 
-  <title>升级hexo至3.2.2 | LucKy_one</title>
+  <title>CFA Level I exam 报名注册 | LucKy_one</title>
   
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-51092894-1"></script>
   <script>
@@ -269,7 +274,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.liutianhe.com/blog/update-hexo-to-3-2-2/">
+    <link itemprop="mainEntityOfPage" href="http://www.liutianhe.com/blog/CFA-level1-register/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Liu Tianhe">
@@ -283,7 +288,7 @@
       <header class="post-header">
 
         
-          <h1 class="post-title" itemprop="name headline">升级hexo至3.2.2
+          <h1 class="post-title" itemprop="name headline">CFA Level I exam 报名注册
 
             
           </h1>
@@ -300,7 +305,7 @@
                 
               
 
-              <time title="创建时间：2016-10-04 00:17:24 / 修改时间：01:26:19" itemprop="dateCreated datePublished" datetime="2016-10-04T00:17:24+08:00">2016-10-04</time>
+              <time title="创建时间：2019-10-04 15:35:33 / 修改时间：15:57:47" itemprop="dateCreated datePublished" datetime="2019-10-04T15:35:33+08:00">2019-10-04</time>
             </span>
           
             
@@ -309,7 +314,7 @@
           
 
           
-            <div class="post-description">记录下重装系统后将hexo升级到3.2.2版本的过程以及遇到的问题</div>
+            <div class="post-description">CFA Level I exam 报名注册</div>
           
 
         </div>
@@ -321,65 +326,24 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>因为Win10的自动更新把系统彻底搞崩了，重装之后需要恢复hexo环境，正好借机将原来的2.X版本升级到最新版3.2.2，记录下过程以及中间遇到的问题：</p>
-<h2 id="nodejs-amp-amp-git"><a href="#nodejs-amp-amp-git" class="headerlink" title="nodejs&amp;&amp;git"></a>nodejs&amp;&amp;git</h2><p>没什么好说的从官网下载最新版安装即可</p>
-<h2 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h2><p><code>npm install -g hexo-cli</code></p>
-<p>新版的hexo把很多部分拆出来模块化了，还需要单独安装，主要需要后安装server和git部署模块<br><code>npm install hexo-server --save</code><br><code>npm install hexo-deployer-git --save</code></p>
-<h2 id="文件迁移"><a href="#文件迁移" class="headerlink" title="文件迁移"></a>文件迁移</h2><p>我选择新init了一个目录来做迁移，init之后比照着修改<code>_config.yml</code>，之后将原来的source_posts下的md文件全部复制过来，以及themes\metro-light经过我细微修改的metro-light主题目录</p>
-<h2 id="生成"><a href="#生成" class="headerlink" title="生成"></a>生成</h2><p>然后hexo g生成测试下，报错了。。</p>
-<pre><code>INFO  Start processing
-FATAL Something&apos;s wrong. Maybe you can find the solution here: http://hexo.io/docs/troubleshooting.html
-Template render error: (unknown path) [Line 7, Column 23]
-  Error: Unable to call `the return value of (posts[&quot;first&quot;])[&quot;updated&quot;][&quot;toISOString&quot;]`, which is undefined or falsey
-    at Object.exports.prettifyError (D:\OneDrive\blog\node_modules\hexo-generator-feed\node_modules\nunjucks\src\lib.js:34:15)
-    at D:\OneDrive\blog\node_modules\hexo-generator-feed\node_modules\nunjucks\src\environment.js:486:31
-    at root [as rootRenderFunc] (eval at &lt;anonymous&gt; (D:\OneDrive\blog\node_modules\hexo-generator-feed\node_modules\nunjucks\src\environment.js:565:24), &lt;anonymous&gt;:161:3)
-    at Obj.extend.render (D:\OneDrive\blog\node_modules\hexo-generator-feed\node_modules\nunjucks\src\environment.js:479:15)
-    at Hexo.module.exports (D:\OneDrive\blog\node_modules\hexo-generator-feed\lib\generator.js:28:22)
-    at Hexo.tryCatcher (D:\OneDrive\blog\node_modules\hexo\node_modules\bluebird\js\release\util.js:16:23)
-    at Hexo.&lt;anonymous&gt; (D:\OneDrive\blog\node_modules\hexo\node_modules\bluebird\js\release\method.js:15:34)
-    at D:\OneDrive\blog\node_modules\hexo\lib\hexo\index.js:337:24
-    at tryCatcher (D:\OneDrive\blog\node_modules\hexo\node_modules\bluebird\js\release\util.js:16:23)
-    at MappingPromiseArray._promiseFulfilled (D:\OneDrive\blog\node_modules\hexo\node_modules\bluebird\js\release\map.js:61:38)
-    at MappingPromiseArray.PromiseArray._iterate (D:\OneDrive\blog\node_modules\hexo\node_modules\bluebird\js\release\promise_array.js:113:31)
-    at MappingPromiseArray.init (D:\OneDrive\blog\node_modules\hexo\node_modules\bluebird\js\release\promise_array.js:77:10)
-    at MappingPromiseArray._asyncInit (D:\OneDrive\blog\node_modules\hexo\node_modules\bluebird\js\release\map.js:30:10)
-    at Async._drainQueue (D:\OneDrive\blog\node_modules\hexo\node_modules\bluebird\js\release\async.js:143:12)
-    at Async._drainQueues (D:\OneDrive\blog\node_modules\hexo\node_modules\bluebird\js\release\async.js:148:10)
-    at Immediate.Async.drainQueues [as _onImmediate] (D:\OneDrive\blog\node_modules\hexo\node_modules\bluebird\js\release\async.js:17:14)
-    at processImmediate [as _immediateCallback] (timers.js:383:17)
-FATAL (unknown path) [Line 7, Column 23]
-  Error: Unable to call `the return value of (posts[&quot;first&quot;])[&quot;updated&quot;][&quot;toISOString&quot;]`, which is undefined or falsey
-Template render error: (unknown path) [Line 7, Column 23]
-  Error: Unable to call `the return value of (posts[&quot;first&quot;])[&quot;updated&quot;][&quot;toISOString&quot;]`, which is undefined or falsey
-    at Object.exports.prettifyError (D:\OneDrive\blog\node_modules\hexo-generator-feed\node_modules\nunjucks\src\lib.js:34:15)
-    at D:\OneDrive\blog\node_modules\hexo-generator-feed\node_modules\nunjucks\src\environment.js:486:31
-    at root [as rootRenderFunc] (eval at &lt;anonymous&gt; (D:\OneDrive\blog\node_modules\hexo-generator-feed\node_modules\nunjucks\src\environment.js:565:24), &lt;anonymous&gt;:161:3)
-    at Obj.extend.render (D:\OneDrive\blog\node_modules\hexo-generator-feed\node_modules\nunjucks\src\environment.js:479:15)
-    at Hexo.module.exports (D:\OneDrive\blog\node_modules\hexo-generator-feed\lib\generator.js:28:22)
-    at Hexo.tryCatcher (D:\OneDrive\blog\node_modules\hexo\node_modules\bluebird\js\release\util.js:16:23)
-    at Hexo.&lt;anonymous&gt; (D:\OneDrive\blog\node_modules\hexo\node_modules\bluebird\js\release\method.js:15:34)
-    at D:\OneDrive\blog\node_modules\hexo\lib\hexo\index.js:337:24
-    at tryCatcher (D:\OneDrive\blog\node_modules\hexo\node_modules\bluebird\js\release\util.js:16:23)
-    at MappingPromiseArray._promiseFulfilled (D:\OneDrive\blog\node_modules\hexo\node_modules\bluebird\js\release\map.js:61:38)
-    at MappingPromiseArray.PromiseArray._iterate (D:\OneDrive\blog\node_modules\hexo\node_modules\bluebird\js\release\promise_array.js:113:31)
-    at MappingPromiseArray.init (D:\OneDrive\blog\node_modules\hexo\node_modules\bluebird\js\release\promise_array.js:77:10)
-    at MappingPromiseArray._asyncInit (D:\OneDrive\blog\node_modules\hexo\node_modules\bluebird\js\release\map.js:30:10)
-    at Async._drainQueue (D:\OneDrive\blog\node_modules\hexo\node_modules\bluebird\js\release\async.js:143:12)
-    at Async._drainQueues (D:\OneDrive\blog\node_modules\hexo\node_modules\bluebird\js\release\async.js:148:10)
-    at Immediate.Async.drainQueues [as _onImmediate] (D:\OneDrive\blog\node_modules\hexo\node_modules\bluebird\js\release\async.js:17:14)
-    at processImmediate [as _immediateCallback] (timers.js:383:17)</code></pre><p>看了眼似乎是hexo-generator-feed插件的问题<br>_config.yml：</p>
-<pre><code>plugins:
-##- hexo-generator-feed</code></pre><p>注释掉这个插件后能够顺利生成了<br>看这个插件的Github上的issue目测是还没支持3.2.2（后面发现不是这个问题）<br><a href="https://github.com/hexojs/hexo-generator-feed/issues/43" target="_blank" rel="noopener">https://github.com/hexojs/hexo-generator-feed/issues/43</a><br>P.S.新版本的生成过程中输出信息少了很多，一度以为有问题，new了个新文章发现也是这样。</p>
-<h2 id="本地测试"><a href="#本地测试" class="headerlink" title="本地测试"></a>本地测试</h2><p>之后准备运行server来本地先看看效果。结果hexo server说没有这个命令。。顿时迷茫了。。尝试重装了hexo和hexo-server依然不行，各种研究之后看到一个说是因为配置文件里的plugins项，看了眼hexo 3.0的改动日志。</p>
-<pre><code>Plugin Loading Mechanism
-In Hexo 3, only plugins listed in package.json will be loaded, and plugins/scripts will be executed in sandbox so hexo namespace will be no longer exposed to global.</code></pre><p>这样看来_config.yml中的plugins项就失去了意义直接删除之后就可以顺利运行，连上面注释掉的feed插件也正常了。比照了下网站上的内容，发现没什么问题，进入下一步部署相关内容。</p>
-<h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><p>先在Git Bash里生成ssh密钥<br><code>ssh-keygen -t rsa -b 4096 -C &quot;your_email@example.com&quot;</code><br>将公钥配置到Github和Coding.net中（我是同时部署到这两个网站，在dnspod里配置DNS信息，联通和电信访问Coding.net其他就访问Github）<br>再<br><code>ssh -T git@github.com</code><br><code>ssh -T git@git.coding.net</code><br>测试下连通性，第一次的话一般会提示:</p>
-<pre><code>The authenticity of host &apos;github.com (192.30.253.113)&apos; can&apos;t be established.
-RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
-Are you sure you want to continue connecting (yes/no)? yes
-Warning: Permanently added &apos;github.com,192.30.253.113&apos; (RSA) to the list of known hosts.
-Hi XXXXXXX! You&apos;ve successfully authenticated, but GitHub does not provide shell access.</code></pre><p>将网站的公钥加入到known_hosts中。</p>
+        <h2 id="报名注册"><a href="#报名注册" class="headerlink" title="报名注册"></a>报名注册</h2><p>cfa的报名注册流程相对比较简单，在<a href="www.cfainstitute.org">www.cfainstitute.org</a>上用邮箱注册用户，然后就可以<a href="www.cfainstitute.org/programs/cfa/register">www.cfainstitute.org/programs/cfa/register</a>里注册考试。</p>
+<p><img src="/images/cfa-register.png" alt></p>
+<p>需要注意的主要有:</p>
+<ul>
+<li>确定报名考试的时间，一年两次，6月一次，12月一次，其中<strong>Level</strong> <strong>II</strong>,<strong>III</strong>只能在6月考。</li>
+<li>报名以及考试需要护照。</li>
+</ul>
+<p><img src="/images/how-to-earn-the-cfa-charter.png" alt></p>
+<h2 id="费用"><a href="#费用" class="headerlink" title="费用"></a>费用</h2><p>CFA的考试报名费用跟报名时间相关，报名越早越便宜。而且不同年份还可能不一样，选实体教材还要额外加钱。</p>
+<p>以2020 June为例：</p>
+<p>费用包含两部分 </p>
+<p>Program enrollment fee: <strong>USD 450</strong> （只用交一次）    </p>
+<p>Exam Registration Fees：（每次考试都要交）</p>
+<p><img src="/images/cfa-fee.png" alt></p>
+<p>最后还有税费：</p>
+<p><img src="/images/cfa-level1-fee.png" alt="报名费用" title="报名费用"></p>
+<p>我是用全币种visa卡支付的。</p>
+<h2 id="电子资料"><a href="#电子资料" class="headerlink" title="电子资料"></a>电子资料</h2><p>之后可以在<a href="https://www.cfainstitute.org/en/programs/cfa/candidate上下载相关的电子资料" target="_blank" rel="noopener">https://www.cfainstitute.org/en/programs/cfa/candidate上下载相关的电子资料</a></p>
 
     </div>
 
@@ -395,7 +359,7 @@ Hi XXXXXXX! You&apos;ve successfully authenticated, but GitHub does not provide 
           
           <div class="post-tags">
             
-              <a href="/tags/hexo/" rel="tag"># hexo</a>
+              <a href="/tags/CFA/" rel="tag"># CFA</a>
             
           </div>
         
@@ -405,8 +369,8 @@ Hi XXXXXXX! You&apos;ve successfully authenticated, but GitHub does not provide 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/blog/sql-join-on-using/" rel="next" title="sql中join on和join using的异同">
-                  <i class="fa fa-chevron-left"></i> sql中join on和join using的异同
+                <a href="/blog/data-mining-handbook/" rel="next" title="数据挖掘比赛Handbook">
+                  <i class="fa fa-chevron-left"></i> 数据挖掘比赛Handbook
                 </a>
               
             </div>
@@ -414,10 +378,6 @@ Hi XXXXXXX! You&apos;ve successfully authenticated, but GitHub does not provide 
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/blog/spring-h2/" rel="prev" title="Spring+Maven+H2（Jave配置,非Spring Boot）">
-                  Spring+Maven+H2（Jave配置,非Spring Boot） <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>
@@ -594,7 +554,7 @@ Hi XXXXXXX! You&apos;ve successfully authenticated, but GitHub does not provide 
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#nodejs-amp-amp-git"><span class="nav-number">1.</span> <span class="nav-text">nodejs&amp;&amp;git</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装hexo"><span class="nav-number">2.</span> <span class="nav-text">安装hexo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件迁移"><span class="nav-number">3.</span> <span class="nav-text">文件迁移</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生成"><span class="nav-number">4.</span> <span class="nav-text">生成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本地测试"><span class="nav-number">5.</span> <span class="nav-text">本地测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部署"><span class="nav-number">6.</span> <span class="nav-text">部署</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#报名注册"><span class="nav-number">1.</span> <span class="nav-text">报名注册</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#费用"><span class="nav-number">2.</span> <span class="nav-text">费用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#电子资料"><span class="nav-number">3.</span> <span class="nav-text">电子资料</span></a></li></ol></div>
             
 
           </div>

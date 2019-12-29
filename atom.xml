@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.liutianhe.com/"/>
-  <updated>2019-10-04T07:57:47.562Z</updated>
+  <updated>2019-12-29T02:28:21.020Z</updated>
   <id>http://www.liutianhe.com/</id>
   
   <author>
@@ -15,6 +15,24 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2018闲书阅读书目</title>
+    <link href="http://www.liutianhe.com/blog/2019-reading-list/"/>
+    <id>http://www.liutianhe.com/blog/2019-reading-list/</id>
+    <published>2019-12-29T03:35:55.000Z</published>
+    <updated>2019-12-29T02:28:21.020Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>《扫地出门：美国城市的贫穷与暴利》</strong><br><img src="https://img1.doubanio.com/view/subject/l/public/s29791279.jpg" alt><br><strong>《低欲望社会》</strong><br><img src="https://img3.doubanio.com/view/subject/l/public/s29877962.jpg" alt><br><strong>《下流社会》</strong><br><img src="https://img3.doubanio.com/view/subject/l/public/s29878520.jpg" alt><br><strong>《非对称风险》</strong><br><img src="https://img3.doubanio.com/view/subject/l/public/s29963833.jpg" alt><br><strong>《深度学习 : 智能时代的核心驱动力量》</strong><br><img src="https://img9.doubanio.com/view/subject/l/public/s29971614.jpg" alt><br><strong>《打开量化投资的黑箱》</strong><br><img src="https://img3.doubanio.com/view/subject/l/public/s28756615.jpg" alt><br><strong>《反脆弱》</strong><br><img src="https://img1.doubanio.com/view/subject/l/public/s27196248.jpg" alt><br><strong>《说谎者的扑克牌》</strong><br><img src="https://img1.doubanio.com/view/subject/l/public/s29789609.jpg" alt><br><strong>《债务危机》</strong><br><img src="https://img9.doubanio.com/view/subject/l/public/s30245856.jpg" alt><br><strong>《一本书看透股权架构》</strong><br><img src="https://img3.doubanio.com/view/subject/l/public/s33464650.jpg" alt><br><strong>《贫穷的本质》</strong><br><img src="https://img9.doubanio.com/view/subject/l/public/s29856376.jpg" alt><br><strong>《寻找Alpha：量化交易策略》</strong><br><img src="https://img3.doubanio.com/view/subject/l/public/s33453071.jpg" alt><br><strong>《共同基金常识》</strong><br><img src="https://img1.doubanio.com/view/subject/l/public/s29834588.jpg" alt><br><strong>《一部电影的诞生》</strong><br><img src="https://img1.doubanio.com/view/subject/l/public/s33535697.jpg" alt></p>]]></content>
+    
+    <summary type="html">
+    
+      2019读过的那些闲书。
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>CFA Level I exam 报名注册</title>
@@ -400,26 +418,6 @@
     <summary type="html">
     
       首先一条特别重要的是：在HubSection中的控件是无法在代码中直接访问的。
-    
-    </summary>
-    
-    
-      <category term="windows8开发" scheme="http://www.liutianhe.com/tags/windows8%E5%BC%80%E5%8F%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>向Windows8应用推送通知(Toast)并响应点击通知事件</title>
-    <link href="http://www.liutianhe.com/blog/windows8_app_post_toast_and_launch_browser/"/>
-    <id>http://www.liutianhe.com/blog/windows8_app_post_toast_and_launch_browser/</id>
-    <published>2014-07-23T14:12:23.000Z</published>
-    <updated>2014-08-03T06:49:55.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>在Mobile Service服务器端推送Toast</p><pre><code>WindowsPushMessage message = new WindowsPushMessage();message.XmlPayload = @&quot;&lt;?xml version=&quot;&quot;1.0&quot;&quot; encoding=&quot;&quot;utf-8&quot;&quot;?&gt;&quot; +                     @&quot;&lt;toast launch=&quot;&quot;toastTest&quot;&quot;&gt;&quot;+  //launch后面的是传输给Onlaunch的参数                     @&quot;&lt;visual&gt;&lt;binding template=&quot;&quot;ToastText01&quot;&quot;&gt;&quot; +                     @&quot;&lt;text id=&quot;&quot;1&quot;&quot;&gt;&quot; + item.Text+&quot;/&quot;+item.UserId+ @&quot;&lt;/text&gt;&quot; +                     @&quot;&lt;/binding&gt;&lt;/visual&gt;&lt;/toast&gt;&quot;;try{    var result = await Services.Push.SendAsync(message);    Services.Log.Info(result.State.ToString());}catch (System.Exception ex){    Services.Log.Error(ex.Message, null, &quot;Push.SendAsync Error&quot;);}</code></pre><p>当你点击Toast时会触发OnLaunched函数，参数内容可以在toast里面指定。这样就可以在OnLaunched根据参数做出指定的操作。</p><pre><code>protected override void OnLaunched(LaunchActivatedEventArgs e){    string launchString = e.Arguments;    if (launchString.Equals(&quot;toastTest&quot;))    {        TestToastLaunchBrowers();    }        …………}</code></pre><p>这里我们通过点击Toast来启动一个外部浏览器并打开一个URL：使用Windows.System.Launcher.LaunchUriAsync(Uri)该方法可以在windows8以及wp8中使用</p><pre><code>async void TestToastLaunchBrowers(){    // Launch the URI    var success = await Windows.System.Launcher.LaunchUriAsync(new Uri(&quot;http://www.bing.com&quot;));}</code></pre><p>参考文献：<br><a href="http://msdn.microsoft.com/en-us/library/windows/apps/xaml/Hh868212(v=win.10).aspx" target="_blank" rel="noopener">How to handle activation from a toast notification (XAML)</a></p>]]></content>
-    
-    <summary type="html">
-    
-      介绍了如何在Azure中的Mobile Service服务器向Windows 8的客户端推送Toast，并且在客户端针对不同的Toast做出相应的操作。
     
     </summary>
     

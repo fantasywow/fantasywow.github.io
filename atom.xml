@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.liutianhe.com/"/>
-  <updated>2019-12-29T02:29:40.487Z</updated>
+  <updated>2020-01-05T08:15:58.524Z</updated>
   <id>http://www.liutianhe.com/</id>
   
   <author>
@@ -15,6 +15,24 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>住户部门贷款/存款比值</title>
+    <link href="http://www.liutianhe.com/blog/Deposits-Loans-of-Households/"/>
+    <id>http://www.liutianhe.com/blog/Deposits-Loans-of-Households/</id>
+    <published>2020-01-05T08:06:01.000Z</published>
+    <updated>2020-01-05T08:15:58.524Z</updated>
+    
+    <content type="html"><![CDATA[<table><thead><tr><th>项目 Item</th><th>2016.01</th><th>2016.02</th><th>2016.03</th><th>2016.04</th><th>2016.05</th><th>2016.06</th><th>2016.07</th><th>2016.08</th><th>2016.09</th><th>2016.10</th><th>2016.11</th><th>2016.12</th><th>2017.01</th><th>2017.02</th><th>2017.03</th><th>2017.04</th><th>2017.05</th><th>2017.06</th><th>2017.07</th><th>2017.08</th><th>2017.09</th><th>2017.10</th><th>2017.11</th><th>2017.12</th><th>2018.01</th><th>2018.02</th><th>2018.03</th><th>2018.04</th><th>2018.05</th><th>2018.06</th><th>2018.07</th><th>2018.08</th><th>2018.09</th><th>2018.10</th><th>2018.11</th><th>2018.12</th><th>2019.01</th><th>2019.02</th><th>2019.03</th><th>2019.04</th><th>2019.05</th><th>2019.06</th><th>2019.07</th><th>2019.08</th><th>2019.09</th><th>2019.10</th><th>2019.11</th></tr></thead><tbody><tr><td>住户存款 Deposits of Households</td><td>555010.25</td><td>575045.94</td><td>580799.22</td><td>571503.07</td><td>572046.09</td><td>581519.81</td><td>579277.99</td><td>583410.17</td><td>592908.67</td><td>588228.33</td><td>591499.03</td><td>597750.46</td><td>629063.28</td><td>630076.46</td><td>637408.84</td><td>625235.60</td><td>626484.45</td><td>637137.54</td><td>629622.57</td><td>632212.48</td><td>642590.47</td><td>634538.46</td><td>635993.73</td><td>643767.47</td><td>652743.97</td><td>681474.21</td><td>686803.49</td><td>673584.68</td><td>675750.45</td><td>686695.43</td><td>683763.22</td><td>687226.39</td><td>700517.89</td><td>697170.63</td><td>704576.18</td><td>716038.13</td><td>754594.42</td><td>767901.6</td><td>776654.05</td><td>770405.87</td><td>772822.71</td><td>784171.66</td><td>783140.1</td><td>785854.07</td><td>801297.98</td><td>795285.95</td><td>797751.54</td></tr><tr><td>住户贷款 Loans to Households</td><td>273242.32</td><td>273198.06</td><td>279598.43</td><td>283774.86</td><td>289451.40</td><td>296415.71</td><td>300944.65</td><td>307590.34</td><td>313880.57</td><td>318094.79</td><td>324706.66</td><td>329428.93</td><td>336787.48</td><td>339840.55</td><td>347754.76</td><td>353403.48</td><td>359522.10</td><td>366907.61</td><td>372428.28</td><td>378916.15</td><td>386095.02</td><td>390435.26</td><td>396441.78</td><td>399564.41</td><td>408463.97</td><td>411178.71</td><td>416991.74</td><td>422323</td><td>428437.98</td><td>435575.59</td><td>441872.41</td><td>448792.72</td><td>456206.1</td><td>461758.32</td><td>468226.4</td><td>472650.74</td><td>482252.04</td><td>481683.33</td><td>490604.36</td><td>495854.25</td><td>502456.43</td><td>509958.24</td><td>515123.58</td><td>521638.19</td><td>529114.88</td><td>533249.02</td><td>540008.8</td></tr></tbody></table><p>​                                                                                                                                                                    单位：亿元        </p><p><img src="/images/Deposits-Loans-of-Households.png" alt></p><p>数据来源：中国人民银行</p>]]></content>
+    
+    <summary type="html">
+    
+      2016/1到2019/11的住户部门贷款/存款比值变化
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>2019闲书阅读书目</title>
@@ -276,11 +294,11 @@
     </summary>
     
     
+      <category term="JAVA" scheme="http://www.liutianhe.com/tags/JAVA/"/>
+    
       <category term="Web Service" scheme="http://www.liutianhe.com/tags/Web-Service/"/>
     
       <category term="CXF" scheme="http://www.liutianhe.com/tags/CXF/"/>
-    
-      <category term="JAVA" scheme="http://www.liutianhe.com/tags/JAVA/"/>
     
       <category term="SPI(Service Provider Interface)" scheme="http://www.liutianhe.com/tags/SPI-Service-Provider-Interface/"/>
     
@@ -403,26 +421,6 @@
     
     
       <category term="java" scheme="http://www.liutianhe.com/tags/java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>访问HubSection中的ListView（windows 8）</title>
-    <link href="http://www.liutianhe.com/blog/Access_controls_in_hubsection/"/>
-    <id>http://www.liutianhe.com/blog/Access_controls_in_hubsection/</id>
-    <published>2014-07-28T14:21:39.000Z</published>
-    <updated>2016-10-03T15:08:51.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>首先一条特别重要的是：<br><strong>在HubSection中的控件是无法在代码中直接访问的。</strong></p><pre><code>&lt;HubSection Width=&quot;800&quot; x:Uid=&quot;Section1Header&quot; Header=&quot;Header&quot;&gt;    &lt;DataTemplate&gt;        &lt;ListView x:Name=&quot;listview&quot;&gt;            &lt;ListView.ItemTemplate&gt;                &lt;DataTemplate&gt;                    &lt;StackPanel Orientation=&quot;Horizontal&quot; &gt;                        &lt;TextBox Text=&quot;{Binding text}&quot;/&gt;                    &lt;/StackPanel&gt;                     &lt;/DataTemplate&gt;            &lt;/ListView.ItemTemplate&gt;        &lt;/ListView&gt;    &lt;/DataTemplate&gt;&lt;/HubSection&gt;</code></pre><p>这样一个ListView如果你像平常一样在代码里</p><pre><code>listView.ItemsSource = someObservableCollection;</code></pre><p>会报错<strong>The name ‘listView’ does not exist in the current context</strong></p><p>一个非常简单的解决办法是在ListView里添加Loaded事件函数。</p><pre><code>&lt;ListView x:Name=&quot;listview&quot; Loaded=&quot;ListView_Loaded&quot;&gt;</code></pre><p>然后添加函数</p><pre><code>private void NotificationList_Loaded(object sender, RoutedEventArgs e){    var listView = (ListView)sender;     listView.ItemsSource = someObservableCollection;}</code></pre><p>总感觉应该有更好的方法。</p>]]></content>
-    
-    <summary type="html">
-    
-      首先一条特别重要的是：在HubSection中的控件是无法在代码中直接访问的。
-    
-    </summary>
-    
-    
-      <category term="windows8开发" scheme="http://www.liutianhe.com/tags/windows8%E5%BC%80%E5%8F%91/"/>
     
   </entry>
   

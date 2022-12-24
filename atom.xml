@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.liutianhe.com/"/>
-  <updated>2021-12-11T04:43:26.866Z</updated>
+  <updated>2022-12-24T07:16:23.520Z</updated>
   <id>http://www.liutianhe.com/</id>
   
   <author>
@@ -15,6 +15,24 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2022闲书阅读书目</title>
+    <link href="http://www.liutianhe.com/blog/2022-reading-list/"/>
+    <id>http://www.liutianhe.com/blog/2022-reading-list/</id>
+    <published>2022-12-24T07:12:21.000Z</published>
+    <updated>2022-12-24T07:16:23.520Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>《我们为什么要睡觉》</strong></p><hr><p><strong>《大衰退》</strong></p><hr><p><strong>《置身事内》</strong></p><hr><p><strong>《挽救计划》</strong></p><hr><p><strong>《史上最伟大的交易》</strong></p><hr><p><strong>《饱食穷民》</strong></p><hr><p><strong>《竞争优势》</strong></p><hr><p><strong>《崩盘：全球金融危机如何重塑世界》</strong></p><hr><p><strong>《金钱博弈》</strong></p><hr>]]></content>
+    
+    <summary type="html">
+    
+      2022读过的那些闲书。
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>2021闲书阅读书目</title>
@@ -397,26 +415,6 @@
     
     
       <category term="algorithm" scheme="http://www.liutianhe.com/tags/algorithm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>限定ASP.NET Web API返回对象的Content-Type为application/json</title>
-    <link href="http://www.liutianhe.com/blog/fix_content-type_to_Applicationjson_in_WebApi/"/>
-    <id>http://www.liutianhe.com/blog/fix_content-type_to_Applicationjson_in_WebApi/</id>
-    <published>2014-08-25T11:36:36.000Z</published>
-    <updated>2014-08-31T09:17:19.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>ASP.NET WebAPI是一套RESTful API开发框架。会自动序列化返回的对象成XML或JSON,其序列化后的格式取决于Request的header中的Accept。常见的有：</p><ul><li>application/json</li><li>application/xml</li><li>text/json</li><li>text/xml(这两种已经被废弃了）</li></ul><p>如果不指定的话默认返回的Content-Type是：application/json; charset=utf-8</p><p>所以使用Chrome和IE11来Get Web Api返回的格式就不同，Chrome是application/xml，而IE11是application/json，就因为两个浏览器请求的Header中的Accept字段不一样。<br>Chrome：<br><code>Accept:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8</code><br>IE11:<br><code>Accept:text/html, application/xhtml+xml, */*</code><br>区别就在于Chrome多了一个<strong>application/xml</strong>。</p><p>###想要指定格式，有两种方法：<br><strong>方法一是放弃自动序列化</strong>，选择返回HttpResponseMessage，再手动设置</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">HttpResponseMessage resp = new HttpResponseMessage();</span><br><span class="line">resp.Content = new StringContent(jsoncontent, System.Text.Encoding.UTF8, &quot;application/json&quot;);</span><br></pre></td></tr></table></figure><p>但是这样就失去了自动序列化带来的便捷，以及导致生成Web API Help Page无法捕获返回的对象。<br>（这也是我为什么要研究这个的原因。。。。结果后来发现可以用<code>[ResponseType(typeof(List&lt;PushPin&gt;))]</code>来指定实际返回的对象）   </p><p><strong>方法二就是设置HttpConfiguration</strong>，设置成只支持application/json。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public static class WebApiConfig</span><br><span class="line">&#123;</span><br><span class="line">  public static void Register()</span><br><span class="line">  &#123;</span><br><span class="line">    // Use this class to set configuration options for your mobile service</span><br><span class="line">    ConfigOptions options = new ConfigOptions();</span><br><span class="line">    // Use this class to set WebAPI configuration options</span><br><span class="line">    HttpConfiguration config = ServiceConfig.Initialize(new ConfigBuilder(options));</span><br><span class="line">    config.Formatters.XmlFormatter.SupportedMediaTypes.Clear(); </span><br><span class="line">    var appjsonType = config.Formatters.JsonFormatter.SupportedMediaTypes.FirstOrDefault(t =&gt; t.MediaType == &quot;text/json&quot;);</span><br><span class="line">    config.Formatters.JsonFormatter.SupportedMediaTypes.Remove(appjsonType);</span><br><span class="line">    // To display errors in the browser during development, uncomment the following</span><br><span class="line">    // line. Comment it out again when you deploy your service for production use.</span><br><span class="line">    // config.IncludeErrorDetailPolicy = IncludeErrorDetailPolicy.Always;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>关键是这几句：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//删除所有的xml格式，也就是text/xml,application/xml</span><br><span class="line">config.Formatters.XmlFormatter.SupportedMediaTypes.Clear();   </span><br><span class="line">//删除text/json  </span><br><span class="line">var appjsonType=config.Formatters.JsonFormatter.SupportedMediaTypes.FirstOrDefault(t =&gt; t.MediaType == &quot;text/json&quot;);</span><br><span class="line">config.Formatters.JsonFormatter.SupportedMediaTypes.Remove(appjsonType);</span><br></pre></td></tr></table></figure><p>其实就是使Web API不支持其他格式了。但是这种方法有个弊端，是全局的，但是应该可以限定范围，暂时先不管了。</p><p>P.S.吐槽下，IE默认是不显示JSON的，会直接下载下来，所以开发人员工具就捕获不到HTTP报文，也没法看Header。找了个方法解决之：</p><pre><code>为了测试更方便，一般我使用 Web API 都会设置让 Web API 返回 Json 格式。在IE浏览器中，当伙同在地址输入 URL 后 IE 浏览器会弹出是否需要下载的提示。实际上 IE 弹出下载提示也没有什么不好的，但是有时候想要迫不及待的看到Json返回的结果时，又需要反复的下载再打开查看，这个行为就显得让人讨厌了。如果能够像 Chrome 或 Firefox 可直接看结果就好了。解决办法也非常简单，需要我们在操作系统的注册表中添加关于 JSON 的 MIME 类型支持，你可以将以下内容编辑成扩展名为 .reg 的文件（文件名随意），然后双击执行将该文件导入注册表：Windows Registry Editor Version 5.00[HKEY_CLASSES_ROOT\MIME\Database\Content Type\application/json]&quot;CLSID&quot;=&quot;{25336920-03F9-11cf-8FD0-00AA00686F13}&quot;&quot;Encoding&quot;=dword:00080000[HKEY_CLASSES_ROOT\MIME\Database\Content Type\text/json]&quot;CLSID&quot;=&quot;{25336920-03F9-11cf-8FD0-00AA00686F13}&quot;&quot;encoding&quot;=dword:00080000其原理是修改注册表，将 application/json、text/json 两种 Content-Type 开启设置调成与 GIF/PNG/HTML 一致，改为直接用浏览器打开查看。导入上面的注册表文件以后，再使用IE开启就可以不需要下载即可显示 json 了。</code></pre><p>From <a href="http://www.iefans.net/ie-dakai-json-xianshi/" target="_blank" rel="noopener">http://www.iefans.net/ie-dakai-json-xianshi/</a></p>]]></content>
-    
-    <summary type="html">
-    
-      ASP.NET Web API是一套RESTful API开发框架。会自动序列化返回的对象成XML或JSON,其序列化后的格式取决于Request的header：Accept。但是某些情况需要固定返回对象的格式为JSON或XML之一，本文介绍了两种方法。
-    
-    </summary>
-    
-    
-      <category term="Web API" scheme="http://www.liutianhe.com/tags/Web-API/"/>
     
   </entry>
   
